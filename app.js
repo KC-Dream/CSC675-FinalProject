@@ -16,6 +16,8 @@ var express     = require("express"),
     
     session = require('express-session');
 
+    //Also: npm i ejs
+
 
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -32,6 +34,14 @@ app.use(require("express-session")({
 
 /* Routes Here */
 
+const homeRouter = require('./routes/home');
+
+app.use(homeRouter);
+
+
+
+/* get/post here */
+
 app.get("/", function(req, res) {
     
     res.render("home");
@@ -41,7 +51,7 @@ app.get("/", function(req, res) {
 
 /* Server Here */
 
-app.listen(process.env.PORT, 3000, function() {
+app.listen(3000, process.env.IP, function() {
     console.log("The Server Has Started!");
 });
 
