@@ -16,10 +16,16 @@ var express     = require("express"),
     
     session = require('express-session');
 
-    //Also: npm i ejs
+    /* 
+    Also: 
+    npm i ejs
+    npm i nodemon
+    */
 
-
-
+    /* 
+    Start Program:
+    nodemon app.js
+    */
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.set("view engine", "ejs");
