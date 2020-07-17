@@ -14,12 +14,65 @@ var express     = require("express"),
 
     methodOverride = require("method-override"),
     
-    session = require('express-session');
+    session = require('express-session'),
+    
+    routes = require('./routes/home'),
+    
+    user = require('./routes/user');
 
     /* 
     Also: 
     npm i ejs
     npm i nodemon
+    */
+
+    /* 
+    SQL
+     */
+
+    /*
+    Run in terminal everytime: export PATH=${PATH}:/usr/local/mysql/bin
+    or
+    save in .bash_profile
+
+    or:
+    echo 'export PATH="/usr/local/mysql/bin:$PATH"' >> ~/.bash_profile
+
+    cat .bash_profile
+    */
+
+    /*
+    npm install mysql --save 
+    mysql --version
+    mysql -u root -p
+
+    If you get this: 
+    Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+    mysql>
+
+    mysql> exit
+
+    mysql> CREATE DATABASE csc675;
+
+    mysql> USE mydb;
+     */
+
+    /*
+    const mysql = require('mysql');
+    const database = mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: 'password',
+        database: 'mydb'
+    });
+
+    database.connect((err) => {
+        if(err) {
+            throw err;
+        }
+        console.log('Connected to SQL Database.');
+        database.query('USE mydb');
+    });
     */
 
     /* 
@@ -40,24 +93,45 @@ app.use(require("express-session")({
 
 /* Routes Here */
 
-const homeRouter = require('./routes/home');
+//const homeRouter = require('./routes/home');
 
-app.use(homeRouter);
+//app.use(homeRouter);
 
 
 
 /* get/post here */
 
-app.get("/", function(req, res) {
+app.get("/", routes.home);
+
+app.get("/signup", user.signup);
+app.post("/signup", user.signup);
+
+app.get("/login", user.login);
+app.post("/login", user.login);
+
+
+
+/*
+app.get("/home", function(req, res) {
     
     res.render("home");
 });
 
+app.get("/login", function(req, res) {
+    
+    res.render("login");
+});
+
+app.get("/signup", function(req, res) {
+    
+    res.render("signup");
+});
+*/
 
 
 /* Server Here */
 
-app.listen(3000, process.env.IP, function() {
+app.listen(3001, process.env.IP, function() {
     console.log("The Server Has Started!");
 });
 
