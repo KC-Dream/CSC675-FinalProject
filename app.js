@@ -57,23 +57,24 @@ var express     = require("express"),
     mysql> USE mydb;
      */
 
-    /*
+    
     const mysql = require('mysql');
-    const database = mysql.createConnection({
+    const db = mysql.createConnection({
         host: 'localhost',
         user: 'root',
         password: 'password',
         database: 'mydb'
     });
 
-    database.connect((err) => {
+    db.connect((err) => {
         if(err) {
             throw err;
         }
         console.log('Connected to SQL Database.');
-        database.query('USE mydb');
+        db.query('USE mydb');
     });
-    */
+    
+    app.db = db;
 
     /* 
     Start Program:
@@ -109,7 +110,7 @@ app.post("/signup", user.signup);
 app.get("/login", user.login);
 app.post("/login", user.login);
 
-
+app.get("/logout", user.logout);
 
 /*
 app.get("/home", function(req, res) {

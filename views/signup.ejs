@@ -1,7 +1,126 @@
+
 <%- include ('partials/header'); -%>
 
+<div class="container login-container">
+    
+	<div class="d-flex justify-content-center h-10">
+		<div class="card login-card">
+			<div class="card-header">
+				<h3 class="login-header">SIGN UP</h3>
+			</div>
+			<div class="card-body">
+				<form action="/signup" method="POST">
+                    <div class="input-group form-group firstname-input">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input type="text" class="form-control " name="firstname" placeholder="First Name">
+                    </div>
+                    <div class="input-group form-group lastname-input">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input type="text" class="form-control " name="lastname" placeholder="Last Name">
+                    </div>
+					<div class="input-group form-group email-input">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="far fa-envelope"></i></i></span>
+						</div>
+						<input type="text" class="form-control " name="email" placeholder="Email">
+					</div>
+					<div class="input-group form-group password-input">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="password" class="form-control" name="password" placeholder="Password">
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Show Language ID Numbers
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#">US English = 1</a>
+                          <a class="dropdown-item" href="#">UK English = 2</a>
+                          <a class="dropdown-item" href="#">CN Chinese = 3</a>
+                          <a class="dropdown-item" href="#">HK Chinese = 4</a>
+                          <a class="dropdown-item" href="#">TW Chinese = 5</a>
+                          <a class="dropdown-item" href="#">MX Spanish = 6</a>
+                          <a class="dropdown-item" href="#">ES Spanish = 7</a>
+                          <a class="dropdown-item" href="#">RU Russian = 8</a>
+                          <a class="dropdown-item" href="#">DE German = 9</a>
+                          <a class="dropdown-item" href="#">IT Italian = 10</a>
+                          <a class="dropdown-item" href="#">JP Japanese = 11</a>
+                          <a class="dropdown-item" href="#">KR Korean = 12</a>
+                          <a class="dropdown-item" href="#">VN Vietnamese = 13</a>
+                          <a class="dropdown-item" href="#">TH Thai = 14</a>
+                          <a class="dropdown-item" href="#">PH Tagalog = 15</a>
+                          <a class="dropdown-item" href="#">All Other Languages = 16</a>
+                        </div>
+                      </div>
+                      <br/>
+                      <h5>Enter your language ID Number Below: </h5>
+                    <div class="input-group form-group languageid-input">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-globe-asia"></i></span>
+						</div>
+						<input type="text" class="form-control" name="langauge_id" placeholder="Language ID" type="number" min="1" max="16" maxlength="2">
+                    </div>
 
+                    
 
+					<button type="submit" class="btn btn-primary login-button2">Sign Up</button>
+				</form>
+			</div>
+			<div class="card-footer">
+				<div class="d-flex justify-content-center links">
+					Already have an account?<a href="/login"> Login</a>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+    .login-button2  {
+        text-align: center;
+        font-size: xx-large;
+
+        font-weight: bold;
+        border-radius: 15px;
+        display: block;
+        margin: auto;
+        margin-top: 15%;
+        
+        width: 100%;
+        
+    }
+    .login-header {
+        margin-top: 1%;
+        text-align: center;
+        font-weight: bold;
+
+    }
+    .login-card {
+        margin-top: 5%;
+        height: 650px;
+        width: 500px;
+        margin-bottom: -10%;
+    }
+    email-input {
+        
+    }
+    password-input {
+
+    }
+    .login-container {
+        background-image: url(https://images.pexels.com/photos/2150/sky-space-dark-galaxy.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+        width: 100%;
+        height: 100%;
+    }
+</style>
 
 <%- include ('partials/footer'); -%>
+
+
 
