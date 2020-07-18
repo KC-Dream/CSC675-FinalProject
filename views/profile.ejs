@@ -1,0 +1,23 @@
+
+<%- include ('partials/header'); -%>
+
+<% if(!data[0].email) { %>
+    <li class="nav-item active ">
+        <a class="navbar-brand" href="/login"><button type="button" class="btn btn-primary btn-lg login-button">Login</button></a>
+        
+    </li>
+    <li class="nav-item">
+        <a class="navbar-brand" href="/signup"><button type="button" class="btn btn-primary btn-lg signup-button">Sign up</button></a>
+        
+    </li>
+    <a href="/" class="home-title"><i class="fas fa-globe-americas"></i> ONLINE COURSE REGISTRATION</a>
+<% } else { %>
+
+    <a>Hello, <%= data[0].firstname %> </a>
+
+    <li class="nav-item active ">
+        <a class="navbar-brand" href="/logout"><button type="button" class="btn btn-primary btn-lg login-button">Logout</button></a>     
+    </li>
+ <% } %>
+
+<%- include ('partials/footer'); -%>

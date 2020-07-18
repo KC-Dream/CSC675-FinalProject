@@ -106,11 +106,20 @@ app.get("/", routes.home);
 
 app.get("/signup", user.signup);
 app.post("/signup", user.signup);
-
 app.get("/login", user.login);
 app.post("/login", user.login);
-
 app.get("/logout", user.logout);
+
+app.get("/user/profile", user.profile); //error TBD
+
+/* Functions */
+
+function isLoggedIn(req, res, next) {
+    if(req.session.user) {
+        return next();
+    }
+    res.redirect("/login");
+}
 
 /*
 app.get("/home", function(req, res) {
