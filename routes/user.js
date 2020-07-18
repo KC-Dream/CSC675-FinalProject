@@ -88,9 +88,10 @@ exports.login = function(req, res) {
                 req.session.userId = results[0].user_id;
                 req.session.user = results[0];
 
-                console.log(results[0].user_id);
+                console.log("user.js - results[0].user_id " + results[0].user_id);
+                console.log("user.js - req.session.user " + req.session.user);
 
-                res.render('profile', {data: results});
+                res.render('profile', {data: results, currentUser: results});
             }
             else {
                 info = 'Incorrect Login';

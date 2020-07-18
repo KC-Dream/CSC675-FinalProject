@@ -1,23 +1,119 @@
 
-<%- include ('partials/header'); -%>
-
-<% if(!data[0].email) { %>
-    <li class="nav-item active ">
-        <a class="navbar-brand" href="/login"><button type="button" class="btn btn-primary btn-lg login-button">Login</button></a>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Online Registration</title>
         
-    </li>
-    <li class="nav-item">
-        <a class="navbar-brand" href="/signup"><button type="button" class="btn btn-primary btn-lg signup-button">Sign up</button></a>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
         
-    </li>
-    <a href="/" class="home-title"><i class="fas fa-globe-americas"></i> ONLINE COURSE REGISTRATION</a>
-<% } else { %>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <a>Hello, <%= data[0].firstname %> </a>
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
-    <li class="nav-item active ">
-        <a class="navbar-brand" href="/logout"><button type="button" class="btn btn-primary btn-lg login-button">Logout</button></a>     
-    </li>
- <% } %>
+    <link rel="stylesheet" type="text/css" href="../../public/stylesheets/style.css">
+
+    
+    
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand home-logo" href="/"><i class="fas fa-home"></i> Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            
+            <% if(!data[0].email && !data[0].user_id) { %>
+
+            <li class="nav-item active ">
+                <a class="navbar-brand" href="/login"><button type="button" class="btn btn-primary btn-lg login-button">Login</button></a>
+                
+            </li>
+            <li class="nav-item">
+                <a class="navbar-brand" href="/signup"><button type="button" class="btn btn-primary btn-lg signup-button">Sign up</button></a>
+                
+            </li>
+
+            <% } else { %>
+
+                <a class="loggedin-user">Hello, <%= data[0].firstname %>, <%= data[0].lastname %></a>
+
+                <li class="nav-item active ">
+                    <a class="navbar-brand" href="/logout"><button type="button" class="btn btn-primary btn-lg login-button">Logout</button></a>     
+                </li>
+             <% } %>
+            
+            <a href="/" class="home-title"><i class="fas fa-globe-americas"></i> ONLINE COURSE REGISTRATION</a>
+            
+          </ul>
+         
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+          <!--
+          
+          -->
+        </div>
+    </nav>
+
+    
+
+    <style>
+        .home-logo {
+            font-weight: bold;
+            font-size: xx-large;
+            size: xx-large;
+        }
+        .home-background {
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .home-title {
+            color: black;
+            font-weight: bold;
+            font-size: xx-large;
+            
+            text-align: center;
+            margin-top: 0.5%;
+            
+            
+        }
+        .login-button {
+            font-weight: bold;
+            border-radius: 15px;
+            text-align: center;
+            display: block;
+            margin: auto;
+
+        }
+
+        .signup-button {
+            font-weight: bold;
+            border-radius: 15px;
+            text-align: center;
+
+        }
+        .loggedin-user {
+            margin-top: 2%;
+            padding-right: 1%;
+        }
+    </style>
+
+    
+
+
+
 
 <%- include ('partials/footer'); -%>
+

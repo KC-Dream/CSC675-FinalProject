@@ -82,6 +82,8 @@ var express     = require("express"),
     */
 app.use(bodyParser.urlencoded({extended: true}));
 
+app.use(express.static("public"));
+
 app.set("view engine", "ejs");
     
 app.use(methodOverride("_method"));
@@ -112,10 +114,26 @@ app.get("/logout", user.logout);
 
 app.get("/user/profile", user.profile); //error TBD
 
+
+app.use(function(req, res, next) {
+    if(req.session.user) {
+        res.locals.currentUser = req.session.userId;
+        console.log("App.js = " + res.locals.currentUser);
+        next();
+        res.redirect("/");
+    }
+    else {
+        res.redirect("/");
+    }
+});
+
+
+
 /* Functions */
 
 function isLoggedIn(req, res, next) {
     if(req.session.user) {
+
         return next();
     }
     res.redirect("/login");
@@ -141,7 +159,7 @@ app.get("/signup", function(req, res) {
 
 /* Server Here */
 
-app.listen(3001, process.env.IP, function() {
+app.listen(3000, process.env.IP, function() {
     console.log("The Server Has Started!");
 });
 
