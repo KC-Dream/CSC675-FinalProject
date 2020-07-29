@@ -18,7 +18,9 @@ var express     = require("express"),
     
     routes = require('./routes/home'),
     
-    user = require('./routes/user');
+    user = require('./routes/user'),
+
+    search = require('./routes/search');
 
     /* 
     Also: 
@@ -113,6 +115,11 @@ app.post("/login", user.login);
 app.get("/logout", user.logout);
 
 app.get("/user/profile", user.profile); //error TBD
+
+/* search */
+
+app.get("/search", search.searchData);
+app.post("/search", search.searchData);
 
 app.get("/exit", function(req, res) {
     res.render("exit");
