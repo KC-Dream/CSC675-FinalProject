@@ -1,0 +1,23 @@
+CREATE DATABASE  IF NOT EXISTS `csc675db` ;
+USE `csc675db`;
+
+
+
+DROP TABLE IF EXISTS `User`;
+
+CREATE TABLE `User` (
+  `user_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
+  `firstname` VARCHAR(45) NOT NULL,
+  `lastname` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `language_id` TINYINT(1) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`user_id`),
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
+ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+LOCK TABLES `User` WRITE;
+
+UNLOCK TABLES;
+

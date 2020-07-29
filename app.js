@@ -63,15 +63,15 @@ var express     = require("express"),
         host: 'localhost',
         user: 'root',
         password: 'password',
-        database: 'mydb'
+        database: 'csc675db'
     });
 
     db.connect((err) => {
         if(err) {
             throw err;
         }
-        console.log('Connected to SQL Database.');
-        db.query('USE mydb');
+        console.log('Connected to csc675db SQL Database.');
+        db.query('USE csc675db');
     });
     
     app.db = db;
@@ -114,6 +114,11 @@ app.get("/logout", user.logout);
 
 app.get("/user/profile", user.profile); //error TBD
 
+app.get("/exit", function(req, res) {
+    res.render("exit");
+    console.log("Exitting now.");
+    process.exit();
+});
 
 app.use(function(req, res, next) {
     if(req.session.user) {
