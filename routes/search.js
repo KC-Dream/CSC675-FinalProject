@@ -8,7 +8,7 @@ exports.searchData = function(req, res) {
     //Easy way to check if they are logged in
 
     /*
-    100% works, uncomment when submitting program
+    100% works, uncomment when done
     if(!req.session.user) {
         res.render("login");
     }
@@ -33,6 +33,93 @@ exports.searchData = function(req, res) {
             res.render("search", { result: JSON.stringify(result) }); 
         });
     }
+
+    if(req.method == "POST") {
+
+        var post = req.body;
+
+        var search = post.search;
+        console.log("SEARCH METHOD = POST");
+        console.log("Search Result = " + search);
+
+        //var sql = "show tables";
+        //[ RowDataPacket { Tables_in_csc675db: 'User' } ]
+
+        var sql = "SELECT * FROM " + "" + search + "";
+        
+        var query = req.app.db.query(sql, function(err, result, fields) {
+
+            if(err) {
+                throw err;
+            }
+            
+            console.log(JSON.stringify(result));
+            res.render("searchResult", { searchData: JSON.stringify(result) });
+        });
+
+        /*
+        [ RowDataPacket { Tables_in_csc675db: 'User' } ]
+
+        var sql = "SELECT * FROM User";
+        result shows all the tables in User
+        var query = req.app.db.query(sql, function(err, result, fields) {
+
+            if(err) {
+                throw err;
+            }
+            
+            console.log(fields);
+            res.render("search", {search: search});
+        });
+        */
+
+        
+
+        
+    }
+    
+};
+
+
+exports.searchResult = function(req, res) {
+
+    var message = "";
+    var session = req.session;
+
+    //Easy way to check if they are logged in
+
+    /*
+    100% works, uncomment when submitting program
+    if(!req.session.user) {
+        res.render("login");
+    }
+    */
+
+    /* end of login check here */
+
+
+    if(req.method == "GET") {
+
+        console.log("SEARCH RESULT METHOD = GET");
+
+        /*
+
+        var sql = "SELECT table_name FROM information_schema.tables WHERE table_schema = 'csc675db'";
+        
+        var query = req.app.db.query(sql, function(err, result, fields) {
+
+            if(err) {
+                throw err;
+            }
+            
+            console.log(result);
+            res.render("search", { result: JSON.stringify(result) }); 
+        });
+
+        */
+    }
+
+    /*
 
     if(req.method == "POST") {
 
@@ -71,16 +158,10 @@ exports.searchData = function(req, res) {
             console.log(fields);
             res.render("search", {search: search});
         });
-        */
-
-        
-
         
     }
-    
+    */
 };
-
-
 
 
 /*

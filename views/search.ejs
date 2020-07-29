@@ -7,11 +7,29 @@
       </form>
 </div>
 
-<div>
-    <p> <%= result %> </p>
+<div class="container list-spacer" id="search-results">
+    <p> Select a table: </p>
+</div>
+
+<div class="container list-spacer" id="search-results">
+
+    <p> <%= result %></p>
+
 </div>
 
 <!-- result should be changed to searchData soon, also a new ejs page for searchData -->
+<!-- <p> <%= result %> </p> -->
+<!-- 
+
+<% let tempArray = [""]; %>
+
+    <% tempArray.push(result); %>
+    
+    <% for(var i of tempArray) { %>
+        <p> <%= i %> - <%= i %> </p>
+    <% } %>
+
+-->
 
 <style>
     #search-field {
@@ -23,6 +41,15 @@
     #search-input {
         max-width: 1000px;
         width: 1000px;
+        
+    }
+    #search-results {
+        text-align: center;
+        align-content: center;
+        margin: auto;
+    }
+    .list-spacer {
+        margin-top: 5%;
     }
     
 </style>

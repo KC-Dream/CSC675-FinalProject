@@ -120,6 +120,7 @@ app.get("/user/profile", user.profile); //error TBD
 
 app.get("/search", search.searchData);
 app.post("/search", search.searchData);
+app.get("/searchResult", search.searchResult);
 
 app.get("/exit", function(req, res) {
     res.render("exit");
