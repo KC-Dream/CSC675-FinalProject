@@ -17,9 +17,9 @@ school_id,
 school_name, 
 language_id) 
 VALUES 
-(1, 'San Francisco State University', 1), 
-(2, 'City College of San Francisco', 2), 
-(3, 'San Jose State University', 3);
+(4, 'San Francisco State University', 1), 
+(5, 'City College of San Francisco', 2), 
+(6, 'San Jose State University', 3);
 
 -- INSERT INTO Course () VALUES (), (), ();
 

@@ -28,7 +28,8 @@ CREATE TABLE `School` (
   `school_name` VARCHAR(45) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
   PRIMARY KEY (`school_id`))
-ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 LOCK TABLES `School` WRITE;
 
 UNLOCK TABLES;
@@ -46,7 +47,7 @@ CREATE TABLE `Course` (
   `materials` VARCHAR(45) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
   PRIMARY KEY (`course_id`))
-ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 LOCK TABLES `Course` WRITE;
 
@@ -198,7 +199,7 @@ CREATE TABLE `Languages` (
   `languages_name` VARCHAR(45) NOT NULL,
   `languages_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`languages_id`))
-EENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 LOCK TABLES `Languages` WRITE;
 
@@ -937,7 +938,7 @@ CREATE TABLE `Programs` (
   `program_name` VARCHAR(45) NOT NULL,
   `Services` TINYINT(1) NOT NULL,
   `programs_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
-  RIMARY KEY (`programs_id`),
+  PRIMARY KEY (`programs_id`),
   INDEX `Services_idx` (`Services` ASC) VISIBLE,
   CONSTRAINT `Services`
     FOREIGN KEY (`Services`)
@@ -989,7 +990,7 @@ LOCK TABLES `PaymentType` WRITE;
 
 UNLOCK TABLES;
 
--
+
 DROP TABLE IF EXISTS `CreditCardPayment` ;
 
 CREATE TABLE `CreditCardPayment` (
@@ -1027,7 +1028,7 @@ CREATE TABLE `BankAccountPayment` (
   `language_id` TINYINT(1) NOT NULL,
   `BankAccountPayment_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
   `PaymentType` TINYINT(1) NOT NULL,
-  PRIMARY KEY (`routing_number`, `BankAccountPayment_id`, `bank_account_number`),
+  PRIMARY KEY (`BankAccountPayment_id`),
   INDEX `PaymentType_idx` (`PaymentType` ASC) VISIBLE,
   CONSTRAINT `fk_PaymentType_BankAccountPayment`
     FOREIGN KEY (`PaymentType`)
@@ -1115,7 +1116,7 @@ CREATE TABLE `FinancialAid` (
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-LOCK TABLES `MFinancialAid` WRITE;
+LOCK TABLES `FinancialAid` WRITE;
 
 UNLOCK TABLES;
 
