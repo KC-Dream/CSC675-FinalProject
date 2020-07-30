@@ -35,6 +35,7 @@ exports.signup = function(req, res) {
 
         var sql = "INSERT INTO `User` (`firstname`, `lastname`, `email`, `language_id`, `password`) VALUES ('" + curr_firstname + "','" + curr_lastname + "','" + curr_email + "','" + curr_languageid + "','" + curr_pass + "')";
 
+        /*
         var sql2 = "INSERT INTO `School` (`school_id`, `school_name`, `language_id`) VALUES ('1', 'john', '1')";
 
         var query2 = req.app.db.query(sql2, function(err, result) {
@@ -44,8 +45,8 @@ exports.signup = function(req, res) {
 
             console.log("Sucessfully added School");
         });
-
-        /*
+        */
+        
         var query = req.app.db.query(sql, function(err, result) {
             if(err) {
                 throw err;
@@ -54,19 +55,8 @@ exports.signup = function(req, res) {
             console.log("Sucessfully signed up!");
             res.render('signup.ejs', {info: info});
         });
-        */
 
        res.render('signup.ejs', {info: info});
-
-        /*
-        `mydb`.`User`
-        `user_id` TINYINT(1) NOT NULL,
-        `firstname` VARCHAR(45) NOT NULL,
-        `lastname` VARCHAR(45) NOT NULL,
-        `email` VARCHAR(45) NOT NULL,
-        `language_id` TINYINT(1) NOT NULL,
-        `password` VARCHAR(45) NOT NULL,
-         */
     }
     else {
         res.render('signup');

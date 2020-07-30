@@ -1,14 +1,42 @@
 <%- include ('partials/header'); -%>
 
 <div class="container" id="search-field">
-    <a href="/search"><button>Search Again</button></a>
+    <a href="/search"><button>Go Back to List of Tables</button></a>
 </div>
 
-<div class="container" id="search-results">
-    <p> <%= searchData %> </p>
+<hr/>
+
+<div class="container">
+    <form action="/searchResult" method="POST">
+
+        <input name="searchKey" type="search" value="<%= searchKey %>">
+
+        <p>Field and value are showed on the bottom like this - field: value - like - firstname : 123</p>
+        <p>What is exactly a field? This is a field to filter your search result. For example: firstname</p>
+
+        <p>Enter a field below:</p>
+
+        <input id="search-input" class="form-control mr-sm-2" type="search" name="searchField" placeholder="Search" aria-label="Search">
+
+        <p>What is exactly a value? This is a value for  your filtered search result. For Example: John</p>
+
+        <p>Enter a value below:</p>
+        <input id="search-input" class="form-control mr-sm-2" type="search" name="searchValue" placeholder="Search" aria-label="Search">
+
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Filter Search</button>
+    </form>
+</div>
+
+<div class="container list-spacer" id="search-results">
+
+    <% for(var i = 0; i < searchData.length; i++) { %>
+        <p><%= searchData[i] %></p>
+    <% } %>
+
 </div>
 
 <!-- result should be changed to searchData soon, also a new ejs page for searchData -->
+<!-- can apply filter to js file too -->
 
 <style>
     #search-field {
@@ -18,8 +46,8 @@
         margin-top: 5%;
     }
     #search-input {
-        max-width: 1000px;
-        width: 1000px;
+        max-width: 7000px;
+        width: 700px;
     }
     #search-results {
         text-align: center;

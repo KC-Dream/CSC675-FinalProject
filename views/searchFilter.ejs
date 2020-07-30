@@ -1,0 +1,39 @@
+<%- include ('partials/header'); -%>
+
+<div class="container" id="search-field">
+    <a href="/search"><button>Go Back to List of Tables</button></a>
+</div>
+
+<hr/>
+
+<div class="container list-spacer" id="search-results">
+
+    <% for(var i = 0; i < searchFilterData.length; i++) { %>
+        <p><%= searchFilterData[i] %></p>
+    <% } %>
+
+</div>
+
+<!-- result should be changed to searchData soon, also a new ejs page for searchData -->
+<!-- can apply filter to js file too -->
+
+<style>
+    #search-field {
+        align-content: center;
+        text-align: center;
+        color: black;
+        margin-top: 5%;
+    }
+    #search-input {
+        max-width: 7000px;
+        width: 700px;
+    }
+    #search-results {
+        text-align: center;
+        align-content: center;
+        margin: auto;
+    }
+    
+</style>
+
+<%- include ('partials/footer'); -%>

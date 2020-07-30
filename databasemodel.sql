@@ -5,7 +5,7 @@ USE `csc675db`;
 
 DROP TABLE IF EXISTS `User`;
 
-CREATE TABLE `User` (
+CREATE TABLE IF NOT EXISTS `User` (
   `user_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
   `firstname` VARCHAR(45) NOT NULL,
   `lastname` VARCHAR(45) NOT NULL,
@@ -23,7 +23,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `School` ;
 
-CREATE TABLE `School` (
+CREATE TABLE IF NOT EXISTS `School` (
   `school_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
   `school_name` VARCHAR(45) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
@@ -38,7 +38,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `Course` ;
 
-CREATE TABLE `Course` (
+CREATE TABLE IF NOT EXISTS `Course` (
   `course_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
   `course_name` VARCHAR(45) NOT NULL,
   `prerequisites` VARCHAR(45) NOT NULL,
@@ -56,7 +56,7 @@ UNLOCK TABLES;
 
 
 
-DROP TABLE IF EXISTS `Major` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `Major` ;
 
 CREATE TABLE `Major` (
   `major_name` VARCHAR(45) NOT NULL,
@@ -70,7 +70,7 @@ LOCK TABLES `Major` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `Certificate` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `Certificate` ;
 
 CREATE TABLE `Certificate` (
   `certificate_name` VARCHAR(45) NOT NULL,
@@ -84,7 +84,7 @@ LOCK TABLES `Certificate` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `Degree` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `Degree` ;
 
 CREATE TABLE `Degree` (
   `degree_type` VARCHAR(45) NOT NULL,
@@ -98,7 +98,7 @@ LOCK TABLES `Degree` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `Services` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `Services` ;
 
 CREATE TABLE `Services` (
   `language_id` TINYINT(1) NOT NULL,
@@ -111,7 +111,7 @@ LOCK TABLES `Services` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `Transcript` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `Transcript` ;
 
 CREATE TABLE `Transcript` (
   `firstname` VARCHAR(45) NOT NULL,
@@ -128,7 +128,7 @@ LOCK TABLES `Transcript` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `Student` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `Student` ;
 
 CREATE TABLE `Student` (
   `student_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
@@ -193,7 +193,7 @@ UNLOCK TABLES;
 
 
 
-DROP TABLE IF EXISTS `Languages` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `Languages` ;
 
 CREATE TABLE `Languages` (
   `languages_name` VARCHAR(45) NOT NULL,
@@ -206,7 +206,7 @@ LOCK TABLES `Languages` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `Admin` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `Admin` ;
 
 CREATE TABLE `Admin` (
   `firstname` VARCHAR(45) NOT NULL,
@@ -221,7 +221,7 @@ LOCK TABLES `Admin` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `SupportTeam` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `SupportTeam` ;
 
 CREATE TABLE `SupportTeam` (
   `firstname` VARCHAR(45) NOT NULL,
@@ -238,7 +238,7 @@ LOCK TABLES `SupportTeam` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `Teacher` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `Teacher` ;
 
 CREATE TABLE `Teacher` (
   `firstname` VARCHAR(45) NOT NULL,
@@ -258,7 +258,7 @@ LOCK TABLES `Teacher` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `PoliceOfficer` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `PoliceOfficer` ;
 
 CREATE TABLE `PoliceOfficer` (
   `firstname` VARCHAR(45) NOT NULL,
@@ -273,7 +273,7 @@ LOCK TABLES `PoliceOfficer` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `NetworkSecuritySpecialist` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `NetworkSecuritySpecialist` ;
 
 CREATE TABLE `NetworkSecuritySpecialist` (
   `firstname` VARCHAR(45) NOT NULL,
@@ -288,7 +288,7 @@ LOCK TABLES `NetworkSecuritySpecialist` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `Counselor` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `Counselor` ;
 
 CREATE TABLE `Counselor` (
   `firstname` VARCHAR(45) NOT NULL,
@@ -304,7 +304,7 @@ LOCK TABLES `Counselor` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `President` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `President` ;
 
 CREATE TABLE `President` (
   `firstname` VARCHAR(45) NOT NULL,
@@ -319,7 +319,7 @@ LOCK TABLES `President` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `Employee` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `Employee` ;
 
 CREATE TABLE `Employee` (
   `employee_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
@@ -389,7 +389,7 @@ LOCK TABLES `Employee` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `TeachingAssistant` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `TeachingAssistant` ;
 
 CREATE TABLE `TeachingAssistant` (
   `firstname` VARCHAR(45) NOT NULL,
@@ -411,7 +411,7 @@ LOCK TABLES `TeachingAssistant` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `CommunityCollege` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `CommunityCollege` ;
 
 CREATE TABLE `CommunityCollege` (
   `highest_degree` VARCHAR(45) NOT NULL,
@@ -433,7 +433,7 @@ LOCK TABLES `CommunityCollege` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `University` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `University` ;
 
 CREATE TABLE `University` (
   `highest_degree` VARCHAR(45) NOT NULL,
@@ -455,7 +455,7 @@ LOCK TABLES `University` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `RoomType` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `RoomType` ;
 
 CREATE TABLE `RoomType` (
   `size` INT NOT NULL,
@@ -469,7 +469,7 @@ LOCK TABLES `RoomType` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `Rooms` ;
+DROP TABLE IF EXISTSIF NOT EXISTS `Rooms` ;
 
 CREATE TABLE `Rooms` (
   `Room_number` INT NOT NULL,
@@ -499,7 +499,7 @@ LOCK TABLES `Rooms` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `Classroom` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `Classroom` ;
 
 CREATE TABLE `Classroom` (
   `classroom_name` VARCHAR(45) NOT NULL,
@@ -520,7 +520,7 @@ LOCK TABLES `Classroom` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `Auditorium` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `Auditorium` ;
 
 CREATE TABLE `Auditorium` (
   `auditorium_name` VARCHAR(45) NOT NULL,
@@ -541,7 +541,7 @@ LOCK TABLES `Auditorium` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `Labatory` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `Labatory` ;
 
 CREATE TABLE `Labatory` (
   `labatory_name` VARCHAR(45) NOT NULL,
@@ -562,7 +562,7 @@ LOCK TABLES `Labatory` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `Office` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `Office` ;
 
 CREATE TABLE `Office` (
   `office_name` VARCHAR(45) NOT NULL,
@@ -583,7 +583,7 @@ LOCK TABLES `Office` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `Cafeteria` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `Cafeteria` ;
 
 CREATE TABLE `Cafeteria` (
   `cafeteria_name` VARCHAR(45) NOT NULL,
@@ -604,7 +604,7 @@ LOCK TABLES `Cafeteria` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `HealthRoom` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `HealthRoom` ;
 
 CREATE TABLE `HealthRoom` (
   `healthroom` VARCHAR(45) NOT NULL,
@@ -625,7 +625,7 @@ LOCK TABLES `HealthRoom` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `Library` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `Library` ;
 
 CREATE TABLE`Library` (
   `library_name` VARCHAR(45) NOT NULL,
@@ -646,7 +646,7 @@ LOCK TABLES `Library` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `StudentEvaluation` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `StudentEvaluation` ;
 
 CREATE TABLE`StudentEvaluation` (
   `studentEvaluation_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
@@ -667,7 +667,7 @@ LOCK TABLES `StudentEvaluation` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `Department` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `Department` ;
 
 CREATE TABLE `Department` (
   `department_name` VARCHAR(45) NOT NULL,
@@ -690,7 +690,7 @@ UNLOCK TABLES;
 
 
 
-DROP TABLE IF EXISTS `CourseSection` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `CourseSection` ;
 
 CREATE TABLE `CourseSection` (
   `section_number` TINYINT(9) NOT NULL,
@@ -711,7 +711,7 @@ LOCK TABLES `CourseSection` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `CourseDescription` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `CourseDescription` ;
 
 CREATE TABLE `CourseDescription` (
   `course_name` VARCHAR(45) NOT NULL,
@@ -733,7 +733,7 @@ LOCK TABLES `CourseDescription` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `Schedule` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `Schedule` ;
 
 CREATE TABLE `Schedule` (
   `year` SMALLINT(1) NOT NULL,
@@ -755,7 +755,7 @@ LOCK TABLES `Schedule` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `SchoolCalendar` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `SchoolCalendar` ;
 
 CREATE TABLE `SchoolCalendar` (
   `term` VARCHAR(45) NOT NULL,
@@ -777,7 +777,7 @@ LOCK TABLES `SchoolCalendar` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `CourseSchedule` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `CourseSchedule` ;
 
 CREATE TABLE `CourseSchedule` (
   `days` INT NOT NULL,
@@ -805,7 +805,7 @@ LOCK TABLES `CourseSchedule` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `ClubMeeting` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `ClubMeeting` ;
 
 CREATE TABLE `ClubMeeting` (
   `days` VARCHAR(45) NOT NULL,
@@ -826,7 +826,7 @@ LOCK TABLES `ClubMeeting` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `Syllabus` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `Syllabus` ;
 
 CREATE TABLE`Syllabus` (
   `syllabus_name` VARCHAR(45) NOT NULL,
@@ -848,7 +848,7 @@ LOCK TABLES `Syllabus` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `Subjects` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `Subjects` ;
 
 CREATE TABLE `Subjects` (
   `subject_name` VARCHAR(45) NOT NULL,
@@ -869,7 +869,7 @@ LOCK TABLES `Subjects` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `Plans` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `Plans` ;
 
 CREATE TABLE `Plans` (
   `plan_name` VARCHAR(45) NOT NULL,
@@ -890,7 +890,7 @@ LOCK TABLES `Plans` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `MealPlan` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `MealPlan` ;
 
 CREATE TABLE `MealPlan` (
   `cost` DECIMAL(6,2) NOT NULL,
@@ -911,7 +911,7 @@ LOCK TABLES `MealPlan` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `HealthPlan` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `HealthPlan` ;
 
 CREATE TABLE `HealthPlan` (
   `cost` INT NOT NULL,
@@ -932,7 +932,7 @@ LOCK TABLES `HealthPlan` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `Programs` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `Programs` ;
 
 CREATE TABLE `Programs` (
   `program_name` VARCHAR(45) NOT NULL,
@@ -952,7 +952,7 @@ LOCK TABLES `Programs` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `Organizations` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `Organizations` ;
 
 CREATE TABLE `Organizations` (
   `organization_name` VARCHAR(45) NOT NULL,
@@ -973,7 +973,7 @@ LOCK TABLES `Organizations` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `PaymentType` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `PaymentType` ;
 
 CREATE TABLE `PaymentType` (
   `billing_address` VARCHAR(45) NOT NULL,
@@ -991,7 +991,7 @@ LOCK TABLES `PaymentType` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `CreditCardPayment` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `CreditCardPayment` ;
 
 CREATE TABLE `CreditCardPayment` (
   `firstname` VARCHAR(45) NOT NULL,
@@ -1018,7 +1018,7 @@ LOCK TABLES `CreditCardPayment` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `BankAccountPayment` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `BankAccountPayment` ;
 
 CREATE TABLE `BankAccountPayment` (
   `firstname` VARCHAR(45) NOT NULL,
@@ -1042,7 +1042,7 @@ LOCK TABLES `BankAccountPayment` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `Scholarship` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `Scholarship` ;
 
 CREATE TABLE `Scholarship` (
   `amount` INT NOT NULL,
@@ -1056,7 +1056,7 @@ LOCK TABLES `Scholarship` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `Account` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `Account` ;
 
 CREATE TABLE `Account` (
   `account_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
@@ -1121,7 +1121,7 @@ LOCK TABLES `FinancialAid` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `Loan` ;
+DROP TABLE IF EXISTS IF NOT EXISTS `Loan` ;
 
 CREATE TABLE `Loan` (
   `amount` INT NOT NULL,

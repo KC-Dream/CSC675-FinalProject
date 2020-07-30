@@ -31,8 +31,8 @@ exports.searchData = function(req, res) {
 
             var allTableArray = [];
 
-            console.log(result);
-            console.log("length = " + result.length);
+            //console.log(result);
+            //console.log("length = " + result.length);
 
             for(var i = 0; i < result.length; i++) {
 
@@ -44,7 +44,7 @@ exports.searchData = function(req, res) {
 
                 stringResult = stringResult.replace("\"}", "");
 
-                console.log(stringResult);
+                //console.log(stringResult);
 
                 allTableArray[i] = stringResult;
 
@@ -67,16 +67,55 @@ exports.searchData = function(req, res) {
         //[ RowDataPacket { Tables_in_csc675db: 'User' } ]
 
         var sql = "SELECT * FROM " + "" + search + "";
-        
+
         var query = req.app.db.query(sql, function(err, result, fields) {
 
             if(err) {
-                throw err;
+                //throw err;
+
+                var notFound = "No matches for this search: " + search;
+
+                res.render("searchResult", { searchData: notFound });
             }
+
+            console.log(result);
             
             console.log(JSON.stringify(result));
-            res.render("searchResult", { searchData: JSON.stringify(result) });
+
+            var allAttributeArray = [];
+
+            for(var i = 0; i < result.length; i++) {
+
+                //console.log(result[i]);
+
+                var stringResult = JSON.stringify(result[i]);
+
+                //stringResult = stringResult.replace("{\"TABLE_NAME\":\"", "");
+
+                stringResult = stringResult.replace("{", "");
+                stringResult = stringResult.replace("}", "");
+
+                //Replace all Strings
+                stringResult = stringResult.split("\"").join(" ");
+
+                //console.log(stringResult);
+
+                allAttributeArray[i] = stringResult;
+
+            }
+
+            res.render("searchResult", { searchData: allAttributeArray, searchKey: search }, );
+
+            // ^ This passes 1 data to route, do {arr, arr}. {arr2, arr2}, {arr3, arr3} to pass multiple data
+
+            //can apply filter here too instead of ejs
         });
+
+        /* Above "User" gets all the users,
+
+        to apply filters type: SELECT name, address FROM User
+
+        */
 
         /*
         [ RowDataPacket { Tables_in_csc675db: 'User' } ]
@@ -118,7 +157,7 @@ exports.searchResult = function(req, res) {
 
     /* end of login check here */
 
-
+    
     if(req.method == "GET") {
 
         console.log("SEARCH RESULT METHOD = GET");
@@ -138,6 +177,79 @@ exports.searchResult = function(req, res) {
         });
 
         */
+    }
+
+    if(req.method == "POST") {
+
+        var post = req.body;
+        var search_key = post.searchKey;
+        var search_field = post.searchField;
+        var search_value = post.searchValue;
+
+        console.log("SEARCH METHOD = POST");
+        //console.log("Search Result = " + search);
+
+        //var sql = "show tables";
+        //[ RowDataPacket { Tables_in_csc675db: 'User' } ]
+
+        //var sql = "SELECT * FROM " + "" + search + "";
+
+        console.log(search_key);
+        console.log(search_field);
+        console.log(search_value);
+
+        //var sql = "SELECT * FROM " + "" + search_key + " WHERE " + search_field + "=" + search_value + "";
+
+        //var sql = "SELECT " + search_field + " FROM " + "" + search_key + "";
+        
+        //working
+        //var sql = "SELECT * FROM " + "" + search_key + "";
+
+        var sql = "SELECT firstname FROM " + "" + search_key + "";
+
+        var query = req.app.db.query(sql, function(err, result, fields) {
+
+            if(err) {
+                //throw err;
+
+                var notFound = "No matches for this search: " + search_key;
+
+                res.render("searchResult", { searchData: notFound });
+            }
+
+            console.log(result);
+            
+            console.log(JSON.stringify(result));
+
+            var allAttributeArray = [];
+
+            for(var i = 0; i < result.length; i++) {
+
+                //console.log(result[i]);
+
+                var stringResult = JSON.stringify(result[i]);
+
+                //stringResult = stringResult.replace("{\"TABLE_NAME\":\"", "");
+
+                stringResult = stringResult.replace("{", "");
+                stringResult = stringResult.replace("}", "");
+
+                //Replace all Strings
+                stringResult = stringResult.split("\"").join(" ");
+
+                //console.log(stringResult);
+
+                allAttributeArray[i] = stringResult;
+
+            }
+
+            res.render("searchFilter", { searchFilterData: allAttributeArray });
+
+            // ^ This passes 1 data to route, do {arr, arr}. {arr2, arr2}, {arr3, arr3} to pass multiple data
+
+            //can apply filter here too instead of ejs
+        });
+
     }
 
     /*
@@ -186,49 +298,5 @@ exports.searchResult = function(req, res) {
 
 
 /*
-info = '';
 
-    console.log("signup req.method = " + req.method);
-
-    if(req.method == "POST") {
-        var post = req.body;
-        var curr_firstname = post.firstname;
-        var curr_lastname = post.lastname;
-        var curr_email = post.email;
-        var curr_languageid = post.language_id;
-        var curr_pass = post.password;
-
-        console.log("curr_firstname = " + curr_firstname);
-        console.log("curr_lastname = " + curr_lastname);
-        console.log("curr_email = " + curr_email);
-        console.log("curr_languageid = " + curr_languageid);
-        console.log("curr_pass = " + curr_pass);
-
-        //correct syntax below confirmed!
-        //var sql = "INSERT INTO `User` (`firstname`, `lastname`, `email`, `language_id`, `password`) VALUES ('kevin', 'zhou', '1234567@gmail.com', 1, '123456')";
-
-        var sql = "INSERT INTO `User` (`firstname`, `lastname`, `email`, `language_id`, `password`) VALUES ('" + curr_firstname + "','" + curr_lastname + "','" + curr_email + "','" + curr_languageid + "','" + curr_pass + "')";
-
-        var query = req.app.db.query(sql, function(err, result) {
-            if(err) {
-                throw err;
-            }
-            info = "Sign Up was sucessful for this user.";
-            console.log("Sucessfully signed up!");
-            res.render('signup.ejs', {info: info});
-        });
-
-        /*
-        `mydb`.`User`
-        `user_id` TINYINT(1) NOT NULL,
-        `firstname` VARCHAR(45) NOT NULL,
-        `lastname` VARCHAR(45) NOT NULL,
-        `email` VARCHAR(45) NOT NULL,
-        `language_id` TINYINT(1) NOT NULL,
-        `password` VARCHAR(45) NOT NULL,
-         
-    }
-    else {
-        res.render('signup');
-    }
 */
