@@ -1,22 +1,5 @@
 <%- include ('partials/header'); -%>
 
-<div style="margin-left: 1%;">
-    <a href="/signup">CREATE ACCOUNT</a>
-    <br/>
-    <a href="/login">LOGIN</a>
-    <br/>
-    <a href="/search">SEARCH</a>
-    <br/>
-    <a href="#">INSERT</a>
-    <br/>
-    <a href="#">UPDATE</a>
-    <br/>
-    <a href="#">DELETE</a>
-    <br/>
-    <a href="/exit">EXIT</a>
-    <br/>
-  </div>
-
 <div class="container" id="search-field">
     <a href="/search"><button>Go Back to List of Tables</button></a>
 </div>
@@ -25,9 +8,7 @@
 
 <div class="container list-spacer" id="search-results">
 
-    <% for(var i = 0; i < searchFilterData.length; i++) { %>
-        <p><%= searchFilterData[i] %></p>
-    <% } %>
+    <p><%= searchData %></p>
 
 </div>
 

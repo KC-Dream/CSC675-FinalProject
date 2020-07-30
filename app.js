@@ -121,6 +121,8 @@ app.get("/user/profile", user.profile); //error TBD
 app.get("/search", search.searchData);
 app.post("/search", search.searchData);
 
+app.get("searchNotFound", search.searchData);
+
 app.get("/searchResult", search.searchResult);
 
 app.post("/searchResult", search.searchResult);
