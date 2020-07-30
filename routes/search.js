@@ -28,9 +28,30 @@ exports.searchData = function(req, res) {
             if(err) {
                 throw err;
             }
-            
+
+            var allTableArray = [];
+
             console.log(result);
-            res.render("search", { result: JSON.stringify(result) }); 
+            console.log("length = " + result.length);
+
+            for(var i = 0; i < result.length; i++) {
+
+                //console.log(result[i]);
+
+                var stringResult = JSON.stringify(result[i]);
+
+                stringResult = stringResult.replace("{\"TABLE_NAME\":\"", "");
+
+                stringResult = stringResult.replace("\"}", "");
+
+                console.log(stringResult);
+
+                allTableArray[i] = stringResult;
+
+            }
+
+           res.render("search", { result : allTableArray }); 
+
         });
     }
 
