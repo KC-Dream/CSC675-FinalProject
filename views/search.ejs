@@ -8,30 +8,16 @@
 </div>
 
 <div class="container list-spacer" id="search-results">
-    <p> Select a table: </p>
+    <p> Select a table Number: </p>
 </div>
 
 <div class="container list-spacer" id="search-results">
 
-    <p> <%= result %></p>
-
-    
-
-</div>
-
-<!-- result should be changed to searchData soon, also a new ejs page for searchData -->
-<!-- <p> <%= result %> </p> -->
-<!-- 
-
-<% let tempArray = [""]; %>
-
-    <% tempArray.push(result); %>
-    
-    <% for(var i of tempArray) { %>
-        <p> <%= i %> - <%= i %> </p>
+    <% for(var i = 0; i < result.length; i++) { %>
+        <p>Table <%= i %> = <%= result[i] %></p>
     <% } %>
 
--->
+</div>
 
 <style>
     #search-field {
