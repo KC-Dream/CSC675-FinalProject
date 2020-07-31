@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "comment": "node app.js && mysql --user='root' --password='password' < databasemodel.sql",
+    "start": "node app.js && mysql --user='root' --password='password' < databasemodel.sql"
   },
   "repository": {
     "type": "git",
@@ -30,3 +31,4 @@
     "passport-local": "^1.0.0"
   }
 }
+
