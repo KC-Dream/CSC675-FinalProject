@@ -156,6 +156,10 @@ exports.searchResult = function(req, res) {
             try {
 
                 console.log(result);
+
+                console.log(result.length);
+
+                console.log(result[0][0]);
             
                 console.log(JSON.stringify(result));
 
