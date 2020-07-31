@@ -1,0 +1,75 @@
+<%- include ('partials/header'); -%>
+
+<div style="margin-left: 1%;">
+    <a href="/signup">CREATE ACCOUNT</a>
+    <br/>
+    <a href="/login">LOGIN</a>
+    <br/>
+    <a href="/search">SEARCH</a>
+    <br/>
+    <a href="#">INSERT</a>
+    <br/>
+    <a href="#">UPDATE</a>
+    <br/>
+    <a href="#">DELETE</a>
+    <br/>
+    <a href="/exit">EXIT</a>
+    <br/>
+  </div>
+
+<div class="container" id="search-field">
+    <a href="/search"><button>Go Back to List of Tables</button></a>
+</div>
+
+<hr/>
+
+<div class="container">
+    <form action="/inserts/Department" method="POST">
+
+        <h1>INSERTING DATA</h1>
+
+        <p>Enter department Name:</p>
+
+        <input id="search-input" class="form-control mr-sm-2" type="search" name="department_name" placeholder="Search" aria-label="Search">
+
+        <p>Enter location:</p>
+
+        <input id="search-input" class="form-control mr-sm-2" type="search" name="location" placeholder="Search" aria-label="Search">
+
+        <p>Enter language ID:</p>
+
+        <P>Enter a number from 1 - 16. No Leters or decimals or special characters!</P>
+
+        <input id="search-input" class="form-control mr-sm-2" type="search" name="language_id" placeholder="Search" aria-label="Search">
+
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Insert Data Now</button>
+    </form>
+</div>
+
+<div class="container list-spacer" id="search-results">
+
+</div>
+
+<!-- result should be changed to searchData soon, also a new ejs page for searchData -->
+<!-- can apply filter to js file too -->
+
+<style>
+    #search-field {
+        align-content: center;
+        text-align: center;
+        color: black;
+        margin-top: 5%;
+    }
+    #search-input {
+        max-width: 7000px;
+        width: 700px;
+    }
+    #search-results {
+        text-align: center;
+        align-content: center;
+        margin: auto;
+    }
+    
+</style>
+
+<%- include ('partials/footer'); -%>

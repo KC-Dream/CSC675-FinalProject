@@ -7,13 +7,13 @@ exports.School = function(req, res) {
 
     if(req.method == "GET") {
 
-        res.render("home", {hi, session});
+        res.render("inserts-school");
         
     }
 
     if(req.method == "POST") {
 
-        res.render("home",{hi, session});
+        res.render("inserts-school");
 
     }
     

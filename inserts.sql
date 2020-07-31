@@ -115,7 +115,7 @@ VALUES
 (2, 'kevinz', 'contacted doctor many times', 2, 2, 2, 2, 2, 2, 2, 2), 
 (3, 'kevin', 'rich one day', 2, 2, 2, 2, 2, 2, 2, 2);
 
--- INSERT INTO user2 () VALUES (), (), ();
+-- INSERT INTO user () VALUES (), (), ();
 
 INSERT INTO User (
 user_id,
@@ -689,7 +689,7 @@ firstname,
 lastname,
 balance,
 language_id,
-user2,
+user,
 PaymentType,
 Scholarship,
 Student
