@@ -47,6 +47,8 @@ exports.searchData = function(req, res) {
 
                 allTableArray[i] = stringResult;
 
+                //console.log(allTableArray);
+
             }
 
            res.render("search", { result : allTableArray }); 

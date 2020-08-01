@@ -1,0 +1,84 @@
+<%- include ('partials/header'); -%>
+
+<div style="margin-left: 1%;">
+    <a href="/signup">CREATE ACCOUNT</a>
+    <br/>
+    <a href="/login">LOGIN</a>
+    <br/>
+    <a href="/search">SEARCH</a>
+    <br/>
+    <a href="/search">INSERT</a>
+    <br/>
+    <a href="#">UPDATE</a>
+    <br/>
+    <a href="#">DELETE</a>
+    <br/>
+    <a href="/exit">EXIT</a>
+    <br/>
+  </div>
+
+  <div class="container">
+    <form action="/searchResult" method="POST">
+
+        <p>Enter a Entity - For Example User, School, Teacher etc:</p>
+
+        <input id="search-input" class="form-control mr-sm-2" type="search" name="searchEntity" placeholder="Search" aria-label="Search">
+
+        <p>Field and value are showed on the bottom like this - field: value - like - firstname : 123</p>
+
+        <p>What is exactly a field? This is a field to filter your search result. For example: firstname</p>
+
+        <p>What is exactly a field? This is a field to filter your search result. For example: firstname</p>
+
+        <p>Enter a field below:</p>
+
+        <input id="search-input" class="form-control mr-sm-2" type="search" name="searchField" placeholder="Search" aria-label="Search">
+
+        <p>What is exactly a value? This is a value for  your filtered search result. For Example: John</p>
+
+        <p>Enter a value below:</p>
+
+        <input id="search-input" class="form-control mr-sm-2" type="search" name="searchValue" placeholder="Search" aria-label="Search">
+
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Update this result</button>
+    </form>
+</div>
+
+<div class="container list-spacer" id="search-results">
+    <p> Here are the tables to edit: </p>
+</div>
+
+<div class="container list-spacer" id="search-results">
+
+    <% for(var i = 0; i < result.length; i++) { %>
+        <p>Table <%= i %> = <%= result[i] %> </p>
+    <% } %>
+
+</div>
+
+<style>
+    #search-field {
+        align-content: center;
+        text-align: center;
+        color: black;
+        margin-top: 5%;
+    }
+    #search-input {
+        max-width: 1000px;
+        width: 1000px;
+        
+    }
+    #search-results {
+        text-align: center;
+        align-content: center;
+        margin: auto;
+    }
+    .list-spacer {
+        margin-top: 5%;
+    }
+    
+</style>
+
+<%- include ('partials/footer'); -%>
+
+

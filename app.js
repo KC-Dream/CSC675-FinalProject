@@ -22,7 +22,9 @@ var express     = require("express"),
 
     search = require('./routes/search'),
     
-    inserts = require('./routes/inserts');
+    inserts = require('./routes/inserts'),
+    
+    update= require('./routes/update');
 
     /* 
     Also: 
@@ -135,6 +137,7 @@ app.get("/searchFilter", search.searchData);
 
 /* insert */
 
+
 app.get("/submitted/inserts", inserts.Submitted);
 
 app.get("/inserts/School", inserts.School);
@@ -181,7 +184,6 @@ app.get("/inserts/CourseSchedule", inserts.CourseSchedule);
 app.get("/inserts/ClubMeeting", inserts.ClubMeeting);
 app.get("/inserts/Syllabus", inserts.Syllabus);
 app.get("/inserts/Subjects", inserts.Subjects);
-
 
 app.get("/insert/Plans", inserts.Plans);
 app.get("/insert/MealPlan", inserts.MealPlan);
@@ -260,7 +262,28 @@ app.post("/inserts/Loan", inserts.Loan);
 
 //End of inserts
 
+/* Begin of update */
 
+app.get("/update", update.updateData);
+app.post("/update", update.updateData);
+
+
+
+
+/*
+app.get("searchNotFound", search.searchData);
+
+app.get("/searchResult", search.searchResult);
+
+
+/* END OF UPDATE */
+
+
+/* BEGIN OF DELETE */
+
+
+
+/* END OF DELETE */
 
 app.get("/exit", function(req, res) {
     res.render("exit");

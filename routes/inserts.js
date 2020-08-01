@@ -800,7 +800,7 @@ exports.PoliceOfficer = function(req, res) {
 
         console.log("SEARCH METHOD = GET");
 
-        res.render("policeofficer");
+        res.render("inserts-policeofficer");
 
     }
 
@@ -1537,7 +1537,7 @@ exports.Auditorium = function(req, res) {
 
         console.log("SEARCH METHOD = GET");
 
-        res.render("inserts-auditorium ");
+        res.render("inserts-auditorium");
 
     }
 
@@ -2670,9 +2670,11 @@ exports.Plans = function(req, res) {
     var plan_name = post.plan_name;
     var language_id = post.language_id;
 
+    console.log("plans");
+
     if(req.method == "GET") {
 
-        console.log("SEARCH METHOD = GET");
+        console.log("plans SEARCH METHOD = GET");
 
         res.render("inserts-plans");
 
