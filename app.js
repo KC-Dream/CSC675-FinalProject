@@ -135,7 +135,7 @@ app.get("/searchFilter", search.searchData);
 
 /* insert */
 
-
+app.get("/submitted/inserts", inserts.Submitted);
 
 app.get("/inserts/School", inserts.School);
 app.get("/inserts/Course", inserts.Course);
