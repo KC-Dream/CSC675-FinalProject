@@ -1,3 +1,3 @@
 # csc675-final
 
-coming soon
+Please read the PDF File for instructions.
