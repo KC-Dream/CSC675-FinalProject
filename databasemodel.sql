@@ -1,5 +1,5 @@
-CREATE DATABASE  IF NOT EXISTS `csc690db`;
-USE `csc690db`;
+CREATE DATABASE  IF NOT EXISTS `csc675course`;
+USE `csc675course`;
 
 /* Start Below */
 

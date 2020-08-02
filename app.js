@@ -71,15 +71,15 @@ var express     = require("express"),
         host: 'localhost',
         user: 'root',
         password: 'password',
-        database: 'csc690db'
+        database: 'csc675course'
     });
 
     db.connect((err) => {
         if(err) {
             throw err;
         }
-        console.log('Connected to csc690db SQL Database.');
-        db.query('USE csc690db');
+        console.log('Connected to csc675course SQL Database.');
+        db.query('USE csc675course');
     });
     
     app.db = db;

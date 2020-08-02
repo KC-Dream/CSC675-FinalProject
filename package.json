@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "comment": "npm install express && npm install body-parser && npm install express-session && npm install mysql && npm install ejs && ls && mysql --user='root' --password='password' < databasemodel.sql && node app.js",
-    "run": "npm install express && npm install body-parser && npm install express-session && npm install mysql && npm install ejs && ls && mysql --user='root' --password='password' < databasemodel.sql && node app.js",
+    "test": "node app.js",
     "start": "npm install express && npm install body-parser && npm install express-session && npm install mysql && npm install ejs && ls && mysql --user='root' --password='password' < databasemodel.sql && node app.js"
   },
   "repository": {
