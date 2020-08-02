@@ -102,7 +102,7 @@ app.use(require("express-session")({
     saveUninitialized: false,
 }));
 
-var cp = require("child_process");
+var child = require("child_process");
 
 //var cmd = 'mysql --user="root" --password="password" < databasemodel.sql';
 
@@ -112,8 +112,8 @@ var cmd = 'mysql --user="root" --password="password" < inserts.sql';
 
 //mysql --user="root" --password="password" < databasemodel.sql
 
-cp.exec(cmd, function(err, stdout, stderr) {
-    console.log(err, stdout, stderr);
+child.exec(cmd, function(err, result, field) {
+    console.log(err);
 });
 
 /* Routes Here */
