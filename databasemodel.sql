@@ -1,5 +1,5 @@
-CREATE DATABASE  IF NOT EXISTS `csc675db` ;
-USE `csc675db`;
+CREATE DATABASE  IF NOT EXISTS `csc690db`;
+USE `csc690db`;
 
 /* Start Below */
 
@@ -56,9 +56,9 @@ UNLOCK TABLES;
 
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `Major` ;
+DROP TABLE IF EXISTS `Major` ;
 
-CREATE TABLE `Major` (
+CREATE TABLE IF NOT EXISTS `Major` (
   `major_name` VARCHAR(45) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
   `major_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
@@ -70,9 +70,9 @@ LOCK TABLES `Major` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `Certificate` ;
+DROP TABLE IF EXISTS  `Certificate` ;
 
-CREATE TABLE `Certificate` (
+CREATE TABLE IF NOT EXISTS `Certificate` (
   `certificate_name` VARCHAR(45) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
   `certificate_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
@@ -84,9 +84,9 @@ LOCK TABLES `Certificate` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `Degree` ;
+DROP TABLE IF EXISTS `Degree` ;
 
-CREATE TABLE `Degree` (
+CREATE TABLE IF NOT EXISTS `Degree` (
   `degree_type` VARCHAR(45) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
   `degree_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
@@ -98,9 +98,9 @@ LOCK TABLES `Degree` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `Services` ;
+DROP TABLE IF EXISTS `Services` ;
 
-CREATE TABLE `Services` (
+CREATE TABLE IF NOT EXISTS `Services` (
   `language_id` TINYINT(1) NOT NULL,
   `services_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`services_id`))
@@ -111,9 +111,9 @@ LOCK TABLES `Services` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `Transcript` ;
+DROP TABLE IF EXISTS `Transcript` ;
 
-CREATE TABLE `Transcript` (
+CREATE TABLE IF NOT EXISTS `Transcript` (
   `firstname` VARCHAR(45) NOT NULL,
   `lastname` VARCHAR(45) NOT NULL,
   `gpa` DECIMAL(6,2) NOT NULL,
@@ -128,9 +128,9 @@ LOCK TABLES `Transcript` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `Student` ;
+DROP TABLE IF EXISTS `Student` ;
 
-CREATE TABLE `Student` (
+CREATE TABLE IF NOT EXISTS `Student` (
   `student_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
   `firstname` VARCHAR(45) NOT NULL,
   `lastname` VARCHAR(45) NOT NULL,
@@ -152,37 +152,37 @@ CREATE TABLE `Student` (
   INDEX `Major_idx` (`Major` ASC) VISIBLE,
   CONSTRAINT `fk_School_student`
     FOREIGN KEY (`School`)
-    REFERENCES `mydb`.`School` (`school_id`)
+    REFERENCES `School` (`school_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Course_Student`
     FOREIGN KEY (`Course`)
-    REFERENCES `mydb`.`Course` (`course_id`)
+    REFERENCES `Course` (`course_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Major_Student`
     FOREIGN KEY (`Major`)
-    REFERENCES `mydb`.`Major` (`major_id`)
+    REFERENCES `Major` (`major_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Certificate_Student`
     FOREIGN KEY (`Certificate`)
-    REFERENCES `mydb`.`Certificate` (`certificate_id`)
+    REFERENCES `Certificate` (`certificate_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Degree_Student`
     FOREIGN KEY (`Degree`)
-    REFERENCES `mydb`.`Degree` (`degree_id`)
+    REFERENCES `Degree` (`degree_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Services_Student`
     FOREIGN KEY (`Services`)
-    REFERENCES `mydb`.`Services` (`services_id`)
+    REFERENCES `Services` (`services_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Transcript_Student`
     FOREIGN KEY (`Transcript`)
-    REFERENCES `mydb`.`Transcript` (`transcript_id`)
+    REFERENCES `Transcript` (`transcript_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -193,9 +193,9 @@ UNLOCK TABLES;
 
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `Languages` ;
+DROP TABLE IF EXISTS `Languages` ;
 
-CREATE TABLE `Languages` (
+CREATE TABLE IF NOT EXISTS `Languages` (
   `languages_name` VARCHAR(45) NOT NULL,
   `languages_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`languages_id`))
@@ -206,9 +206,9 @@ LOCK TABLES `Languages` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `Admin` ;
+DROP TABLE IF EXISTS `Admin` ;
 
-CREATE TABLE `Admin` (
+CREATE TABLE IF NOT EXISTS `Admin` (
   `firstname` VARCHAR(45) NOT NULL,
   `lastname` VARCHAR(45) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
@@ -221,9 +221,9 @@ LOCK TABLES `Admin` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `SupportTeam` ;
+DROP TABLE IF EXISTS `SupportTeam` ;
 
-CREATE TABLE `SupportTeam` (
+CREATE TABLE IF NOT EXISTS `SupportTeam` (
   `firstname` VARCHAR(45) NOT NULL,
   `lastname` VARCHAR(45) NOT NULL,
   `phone_number` CHAR(10) NOT NULL,
@@ -238,9 +238,9 @@ LOCK TABLES `SupportTeam` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `Teacher` ;
+DROP TABLE IF EXISTS `Teacher` ;
 
-CREATE TABLE `Teacher` (
+CREATE TABLE IF NOT EXISTS `Teacher` (
   `firstname` VARCHAR(45) NOT NULL,
   `lastname` VARCHAR(45) NOT NULL,
   `department` VARCHAR(45) NOT NULL,
@@ -258,9 +258,9 @@ LOCK TABLES `Teacher` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `PoliceOfficer` ;
+DROP TABLE IF EXISTS `PoliceOfficer` ;
 
-CREATE TABLE `PoliceOfficer` (
+CREATE TABLE IF NOT EXISTS `PoliceOfficer` (
   `firstname` VARCHAR(45) NOT NULL,
   `lastname` VARCHAR(45) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
@@ -273,9 +273,9 @@ LOCK TABLES `PoliceOfficer` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `NetworkSecuritySpecialist` ;
+DROP TABLE IF EXISTS `NetworkSecuritySpecialist` ;
 
-CREATE TABLE `NetworkSecuritySpecialist` (
+CREATE TABLE IF NOT EXISTS `NetworkSecuritySpecialist` (
   `firstname` VARCHAR(45) NOT NULL,
   `lastname` VARCHAR(45) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
@@ -288,9 +288,9 @@ LOCK TABLES `NetworkSecuritySpecialist` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `Counselor` ;
+DROP TABLE IF EXISTS `Counselor` ;
 
-CREATE TABLE `Counselor` (
+CREATE TABLE IF NOT EXISTS `Counselor` (
   `firstname` VARCHAR(45) NOT NULL,
   `lastname` VARCHAR(45) NOT NULL,
   `department` VARCHAR(45) NOT NULL,
@@ -304,9 +304,9 @@ LOCK TABLES `Counselor` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `President` ;
+DROP TABLE IF EXISTS `President` ;
 
-CREATE TABLE `President` (
+CREATE TABLE IF NOT EXISTS `President` (
   `firstname` VARCHAR(45) NOT NULL,
   `lastname` VARCHAR(45) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
@@ -319,9 +319,9 @@ LOCK TABLES `President` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `Employee` ;
+DROP TABLE IF EXISTS `Employee` ;
 
-CREATE TABLE `Employee` (
+CREATE TABLE IF NOT EXISTS `Employee` (
   `employee_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
   `occupation` VARCHAR(45) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
@@ -344,42 +344,42 @@ CREATE TABLE `Employee` (
   INDEX `President_idx` (`President` ASC) VISIBLE,
   CONSTRAINT `fk_School_Employee`
     FOREIGN KEY (`School`)
-    REFERENCES `mydb`.`School` (`school_id`)
+    REFERENCES `School` (`school_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Admin_Employee`
     FOREIGN KEY (`Admin`)
-    REFERENCES `mydb`.`Admin` (`admin_id`)
+    REFERENCES `Admin` (`admin_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_SupportTeam_Employee`
     FOREIGN KEY (`SupportTeam`)
-    REFERENCES `mydb`.`SupportTeam` (`supportTeam_id`)
+    REFERENCES `SupportTeam` (`supportTeam_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Teacher_Employee`
     FOREIGN KEY (`Teacher`)
-    REFERENCES `mydb`.`Teacher` (`teacher_id`)
+    REFERENCES `Teacher` (`teacher_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_PoliceOfficer_Employee`
     FOREIGN KEY (`PoliceOfficer`)
-    REFERENCES `mydb`.`PoliceOfficer` (`policeOfficer_id`)
+    REFERENCES `PoliceOfficer` (`policeOfficer_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_NetworkSecuritySpecialist_Employee`
     FOREIGN KEY (`NetworkSecuritySpecialist`)
-    REFERENCES `mydb`.`NetworkSecuritySpecialist` (`networkSecuritySpecialist_id`)
+    REFERENCES `NetworkSecuritySpecialist` (`networkSecuritySpecialist_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Counselor_Employee`
     FOREIGN KEY (`Counselor`)
-    REFERENCES `mydb`.`Counselor` (`counselor_id`)
+    REFERENCES `Counselor` (`counselor_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_President_Employee`
     FOREIGN KEY (`President`)
-    REFERENCES `mydb`.`President` (`president_id`)
+    REFERENCES `President` (`president_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -389,9 +389,9 @@ LOCK TABLES `Employee` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `TeachingAssistant` ;
+DROP TABLE IF EXISTS `TeachingAssistant` ;
 
-CREATE TABLE `TeachingAssistant` (
+CREATE TABLE IF NOT EXISTS `TeachingAssistant` (
   `firstname` VARCHAR(45) NOT NULL,
   `lastname` VARCHAR(45) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
@@ -401,7 +401,7 @@ CREATE TABLE `TeachingAssistant` (
   INDEX `Student_idx` (`Student` ASC) VISIBLE,
   CONSTRAINT `fk_Student_TeachingAssistant`
     FOREIGN KEY (`Student`)
-    REFERENCES `mydb`.`Student` (`student_id`)
+    REFERENCES `Student` (`student_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -411,9 +411,9 @@ LOCK TABLES `TeachingAssistant` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `CommunityCollege` ;
+DROP TABLE IF EXISTS `CommunityCollege` ;
 
-CREATE TABLE `CommunityCollege` (
+CREATE TABLE IF NOT EXISTS `CommunityCollege` (
   `highest_degree` VARCHAR(45) NOT NULL,
   `cost` DECIMAL(6,2) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
@@ -423,7 +423,7 @@ CREATE TABLE `CommunityCollege` (
   INDEX `School_idx` (`School` ASC) VISIBLE,
   CONSTRAINT `fk_School_CommunityCollege`
     FOREIGN KEY (`School`)
-    REFERENCES `mydb`.`School` (`school_id`)
+    REFERENCES `School` (`school_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -433,9 +433,9 @@ LOCK TABLES `CommunityCollege` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `University` ;
+DROP TABLE IF EXISTS `University` ;
 
-CREATE TABLE `University` (
+CREATE TABLE IF NOT EXISTS `University` (
   `highest_degree` VARCHAR(45) NOT NULL,
   `cost` DECIMAL(6,2) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
@@ -445,7 +445,7 @@ CREATE TABLE `University` (
   INDEX `School_idx` (`School` ASC) VISIBLE,
   CONSTRAINT `fk_School_University`
     FOREIGN KEY (`School`)
-    REFERENCES `mydb`.`School` (`school_id`)
+    REFERENCES `School` (`school_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -455,9 +455,9 @@ LOCK TABLES `University` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `RoomType` ;
+DROP TABLE IF EXISTS `RoomType` ;
 
-CREATE TABLE `RoomType` (
+CREATE TABLE IF NOT EXISTS `RoomType` (
   `size` INT NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
   `RoomType_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
@@ -469,9 +469,9 @@ LOCK TABLES `RoomType` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTSIF NOT EXISTS `Rooms` ;
+DROP TABLE IF EXISTS `Rooms` ;
 
-CREATE TABLE `Rooms` (
+CREATE TABLE IF NOT EXISTS `Rooms` (
   `Room_number` INT NOT NULL,
   `location` VARCHAR(45) NOT NULL,
   `floor` TINYINT(9) NOT NULL,
@@ -484,12 +484,12 @@ CREATE TABLE `Rooms` (
   INDEX `School_idx` (`School` ASC) VISIBLE,
   CONSTRAINT `fk_RoomType_Rooms`
     FOREIGN KEY (`RoomType`)
-    REFERENCES `mydb`.`RoomType` (`RoomType_id`)
+    REFERENCES `RoomType` (`RoomType_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_School_Rooms`
     FOREIGN KEY (`School`)
-    REFERENCES `mydb`.`School` (`school_id`)
+    REFERENCES `School` (`school_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -499,9 +499,9 @@ LOCK TABLES `Rooms` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `Classroom` ;
+DROP TABLE IF EXISTS `Classroom` ;
 
-CREATE TABLE `Classroom` (
+CREATE TABLE IF NOT EXISTS `Classroom` (
   `classroom_name` VARCHAR(45) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
   `classroom_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
@@ -510,7 +510,7 @@ CREATE TABLE `Classroom` (
   INDEX `RoomType_idx` (`RoomType` ASC) VISIBLE,
   CONSTRAINT `fk_RoomType_Classroom`
     FOREIGN KEY (`RoomType`)
-    REFERENCES `mydb`.`RoomType` (`RoomType_id`)
+    REFERENCES `RoomType` (`RoomType_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -520,9 +520,9 @@ LOCK TABLES `Classroom` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `Auditorium` ;
+DROP TABLE IF EXISTS `Auditorium` ;
 
-CREATE TABLE `Auditorium` (
+CREATE TABLE IF NOT EXISTS `Auditorium` (
   `auditorium_name` VARCHAR(45) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
   `auditorium_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
@@ -531,7 +531,7 @@ CREATE TABLE `Auditorium` (
   INDEX `fk_RoomType_idx` (`RoomType` ASC) VISIBLE,
   CONSTRAINT `fk_RoomType_Auditorium`
     FOREIGN KEY (`RoomType`)
-    REFERENCES `mydb`.`RoomType` (`RoomType_id`)
+    REFERENCES `RoomType` (`RoomType_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -541,9 +541,9 @@ LOCK TABLES `Auditorium` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `Labatory` ;
+DROP TABLE IF EXISTS `Labatory` ;
 
-CREATE TABLE `Labatory` (
+CREATE TABLE IF NOT EXISTS `Labatory` (
   `labatory_name` VARCHAR(45) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
   `labatory_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
@@ -552,7 +552,7 @@ CREATE TABLE `Labatory` (
   INDEX `RoomType_idx` (`RoomType` ASC) VISIBLE,
   CONSTRAINT `fk_RoomType_Labatory`
     FOREIGN KEY (`RoomType`)
-    REFERENCES `mydb`.`RoomType` (`RoomType_id`)
+    REFERENCES `RoomType` (`RoomType_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -562,9 +562,9 @@ LOCK TABLES `Labatory` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `Office` ;
+DROP TABLE IF EXISTS `Office` ;
 
-CREATE TABLE `Office` (
+CREATE TABLE IF NOT EXISTS `Office` (
   `office_name` VARCHAR(45) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
   `office_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
@@ -573,7 +573,7 @@ CREATE TABLE `Office` (
   INDEX `RoomType_idx` (`RoomType` ASC) VISIBLE,
   CONSTRAINT `fk_RoomType_Office`
     FOREIGN KEY (`RoomType`)
-    REFERENCES `mydb`.`RoomType` (`RoomType_id`)
+    REFERENCES `RoomType` (`RoomType_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -583,9 +583,9 @@ LOCK TABLES `Office` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `Cafeteria` ;
+DROP TABLE IF EXISTS `Cafeteria` ;
 
-CREATE TABLE `Cafeteria` (
+CREATE TABLE IF NOT EXISTS `Cafeteria` (
   `cafeteria_name` VARCHAR(45) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
   `cafeteria_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
@@ -594,7 +594,7 @@ CREATE TABLE `Cafeteria` (
   INDEX `RoomType_idx` (`RoomType` ASC) VISIBLE,
   CONSTRAINT `fk_RoomType_Cafeteria`
     FOREIGN KEY (`RoomType`)
-    REFERENCES `mydb`.`RoomType` (`RoomType_id`)
+    REFERENCES `RoomType` (`RoomType_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -604,9 +604,9 @@ LOCK TABLES `Cafeteria` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `HealthRoom` ;
+DROP TABLE IF EXISTS `HealthRoom` ;
 
-CREATE TABLE `HealthRoom` (
+CREATE TABLE IF NOT EXISTS `HealthRoom` (
   `healthroom` VARCHAR(45) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
   `healthRoom_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
@@ -615,7 +615,7 @@ CREATE TABLE `HealthRoom` (
   INDEX `RoomType_idx` (`RoomType` ASC) VISIBLE,
   CONSTRAINT `fk_RoomType_HealthRoom`
     FOREIGN KEY (`RoomType`)
-    REFERENCES `mydb`.`RoomType` (`RoomType_id`)
+    REFERENCES `RoomType` (`RoomType_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -625,9 +625,9 @@ LOCK TABLES `HealthRoom` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `Library` ;
+DROP TABLE IF EXISTS `Library` ;
 
-CREATE TABLE`Library` (
+CREATE TABLE IF NOT EXISTS `Library` (
   `library_name` VARCHAR(45) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
   `library_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
@@ -636,7 +636,7 @@ CREATE TABLE`Library` (
   INDEX `RoomType_idx` (`RoomType` ASC) VISIBLE,
   CONSTRAINT `fk_RoomType_Library`
     FOREIGN KEY (`RoomType`)
-    REFERENCES `mydb`.`RoomType` (`RoomType_id`)
+    REFERENCES `RoomType` (`RoomType_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -646,9 +646,9 @@ LOCK TABLES `Library` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `StudentEvaluation` ;
+DROP TABLE IF EXISTS `StudentEvaluation` ;
 
-CREATE TABLE`StudentEvaluation` (
+CREATE TABLE IF NOT EXISTS `StudentEvaluation` (
   `studentEvaluation_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
   `evaluation_name` VARCHAR(45) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
@@ -657,7 +657,7 @@ CREATE TABLE`StudentEvaluation` (
   INDEX `Student_idx` (`Student` ASC) VISIBLE,
   CONSTRAINT `Student`
     FOREIGN KEY (`Student`)
-    REFERENCES `mydb`.`Student` (`student_id`)
+    REFERENCES `Student` (`student_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -667,9 +667,9 @@ LOCK TABLES `StudentEvaluation` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `Department` ;
+DROP TABLE IF EXISTS `Department` ;
 
-CREATE TABLE `Department` (
+CREATE TABLE IF NOT EXISTS `Department` (
   `department_name` VARCHAR(45) NOT NULL,
   `location` VARCHAR(45) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
@@ -679,7 +679,7 @@ CREATE TABLE `Department` (
   INDEX `fk_School_Department_idx` (`School` ASC) VISIBLE,
   CONSTRAINT `fk_School_Department`
     FOREIGN KEY (`School`)
-    REFERENCES `mydb`.`School` (`school_id`)
+    REFERENCES `School` (`school_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -690,9 +690,9 @@ UNLOCK TABLES;
 
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `CourseSection` ;
+DROP TABLE IF EXISTS `CourseSection` ;
 
-CREATE TABLE `CourseSection` (
+CREATE TABLE IF NOT EXISTS `CourseSection` (
   `section_number` TINYINT(9) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
   `courseSection_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
@@ -701,7 +701,7 @@ CREATE TABLE `CourseSection` (
   INDEX `Course_idx` (`Course` ASC) VISIBLE,
   CONSTRAINT `fk_Course_CourseSchedule`
     FOREIGN KEY (`Course`)
-    REFERENCES `mydb`.`Course` (`course_id`)
+    REFERENCES `Course` (`course_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -711,9 +711,9 @@ LOCK TABLES `CourseSection` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `CourseDescription` ;
+DROP TABLE IF EXISTS `CourseDescription` ;
 
-CREATE TABLE `CourseDescription` (
+CREATE TABLE IF NOT EXISTS `CourseDescription` (
   `course_name` VARCHAR(45) NOT NULL,
   `course_description` VARCHAR(45) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
@@ -723,7 +723,7 @@ CREATE TABLE `CourseDescription` (
   INDEX `Course_idx` (`Course` ASC) VISIBLE,
   CONSTRAINT `fk_Course_CourseDescription`
     FOREIGN KEY (`Course`)
-    REFERENCES `mydb`.`Course` (`course_id`)
+    REFERENCES `Course` (`course_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -733,9 +733,9 @@ LOCK TABLES `CourseDescription` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `Schedule` ;
+DROP TABLE IF EXISTS `Schedule` ;
 
-CREATE TABLE `Schedule` (
+CREATE TABLE IF NOT EXISTS `Schedule` (
   `year` SMALLINT(1) NOT NULL,
   `month` TINYINT(9) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
@@ -745,7 +745,7 @@ CREATE TABLE `Schedule` (
   INDEX `School_idx` (`School` ASC) VISIBLE,
   CONSTRAINT `fk_School_Schedule`
     FOREIGN KEY (`School`)
-    REFERENCES `mydb`.`School` (`school_id`)
+    REFERENCES `School` (`school_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -755,9 +755,9 @@ LOCK TABLES `Schedule` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `SchoolCalendar` ;
+DROP TABLE IF EXISTS `SchoolCalendar` ;
 
-CREATE TABLE `SchoolCalendar` (
+CREATE TABLE IF NOT EXISTS `SchoolCalendar` (
   `term` VARCHAR(45) NOT NULL,
   `holidays` TINYINT(9) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
@@ -767,7 +767,7 @@ CREATE TABLE `SchoolCalendar` (
   INDEX `Schedule_idx` (`Schedule` ASC) VISIBLE,
   CONSTRAINT `fk_Schedule_SchoolCalendar`
     FOREIGN KEY (`Schedule`)
-    REFERENCES `mydb`.`Schedule` (`Schedule_id`)
+    REFERENCES `Schedule` (`Schedule_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -777,9 +777,9 @@ LOCK TABLES `SchoolCalendar` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `CourseSchedule` ;
+DROP TABLE IF EXISTS `CourseSchedule` ;
 
-CREATE TABLE `CourseSchedule` (
+CREATE TABLE IF NOT EXISTS `CourseSchedule` (
   `days` INT NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
   `courseSchedule_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
@@ -790,12 +790,12 @@ CREATE TABLE `CourseSchedule` (
   INDEX `Schedule_idx` (`Schedule` ASC) VISIBLE,
   CONSTRAINT `fk_Course_CourseSchedule_1`
     FOREIGN KEY (`Course`)
-    REFERENCES `mydb`.`Course` (`course_id`)
+    REFERENCES `Course` (`course_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Schedule_CourseSchedule`
     FOREIGN KEY (`Schedule`)
-    REFERENCES `mydb`.`Schedule` (`Schedule_id`)
+    REFERENCES `Schedule` (`Schedule_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -805,9 +805,9 @@ LOCK TABLES `CourseSchedule` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `ClubMeeting` ;
+DROP TABLE IF EXISTS `ClubMeeting` ;
 
-CREATE TABLE `ClubMeeting` (
+CREATE TABLE IF NOT EXISTS `ClubMeeting` (
   `days` VARCHAR(45) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
   `clubMeeting_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
@@ -816,7 +816,7 @@ CREATE TABLE `ClubMeeting` (
   INDEX `fk_Schedule_ClubMeeting_idx` (`Schedule` ASC) VISIBLE,
   CONSTRAINT `fk_Schedule_ClubMeeting`
     FOREIGN KEY (`Schedule`)
-    REFERENCES `mydb`.`Schedule` (`Schedule_id`)
+    REFERENCES `Schedule` (`Schedule_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -826,9 +826,9 @@ LOCK TABLES `ClubMeeting` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `Syllabus` ;
+DROP TABLE IF EXISTS `Syllabus` ;
 
-CREATE TABLE`Syllabus` (
+CREATE TABLE IF NOT EXISTS `Syllabus` (
   `syllabus_name` VARCHAR(45) NOT NULL,
   `semester_term` VARCHAR(45) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
@@ -838,7 +838,7 @@ CREATE TABLE`Syllabus` (
   INDEX `Course_idx` (`Course` ASC) VISIBLE,
   CONSTRAINT `fk_Course_Syllabus`
     FOREIGN KEY (`Course`)
-    REFERENCES `mydb`.`Course` (`course_id`)
+    REFERENCES `Course` (`course_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -848,9 +848,9 @@ LOCK TABLES `Syllabus` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `Subjects` ;
+DROP TABLE IF EXISTS `Subjects` ;
 
-CREATE TABLE `Subjects` (
+CREATE TABLE IF NOT EXISTS `Subjects` (
   `subject_name` VARCHAR(45) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
   `subjects_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
@@ -859,7 +859,7 @@ CREATE TABLE `Subjects` (
   INDEX `Course_idx` (`Course` ASC) VISIBLE,
   CONSTRAINT `fk_Course_Subjects`
     FOREIGN KEY (`Course`)
-    REFERENCES `mydb`.`Course` (`course_id`)
+    REFERENCES `Course` (`course_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -869,9 +869,9 @@ LOCK TABLES `Subjects` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `Plans` ;
+DROP TABLE IF EXISTS `Plans` ;
 
-CREATE TABLE `Plans` (
+CREATE TABLE IF NOT EXISTS `Plans` (
   `plan_name` VARCHAR(45) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
   `plans_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
@@ -880,7 +880,7 @@ CREATE TABLE `Plans` (
   INDEX `Services_idx` (`Services` ASC) VISIBLE,
   CONSTRAINT `fk_Services_Plans`
     FOREIGN KEY (`Services`)
-    REFERENCES `mydb`.`Services` (`services_id`)
+    REFERENCES `Services` (`services_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -890,9 +890,9 @@ LOCK TABLES `Plans` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `MealPlan` ;
+DROP TABLE IF EXISTS `MealPlan` ;
 
-CREATE TABLE `MealPlan` (
+CREATE TABLE IF NOT EXISTS `MealPlan` (
   `cost` DECIMAL(6,2) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
   `mealPlan_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
@@ -901,7 +901,7 @@ CREATE TABLE `MealPlan` (
   INDEX `Plans_idx` (`Plans` ASC) VISIBLE,
   CONSTRAINT `fk_Plans_MealPlan`
     FOREIGN KEY (`Plans`)
-    REFERENCES `mydb`.`Plans` (`plans_id`)
+    REFERENCES `Plans` (`plans_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -911,9 +911,9 @@ LOCK TABLES `MealPlan` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `HealthPlan` ;
+DROP TABLE IF EXISTS `HealthPlan` ;
 
-CREATE TABLE `HealthPlan` (
+CREATE TABLE IF NOT EXISTS `HealthPlan` (
   `cost` INT NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
   `healthPlan_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
@@ -922,7 +922,7 @@ CREATE TABLE `HealthPlan` (
   INDEX `Plans_idx` (`Plans` ASC) VISIBLE,
   CONSTRAINT `fk_Plans_HealthPlan`
     FOREIGN KEY (`Plans`)
-    REFERENCES `mydb`.`Plans` (`plans_id`)
+    REFERENCES `Plans` (`plans_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -932,9 +932,9 @@ LOCK TABLES `HealthPlan` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `Programs` ;
+DROP TABLE IF EXISTS `Programs` ;
 
-CREATE TABLE `Programs` (
+CREATE TABLE IF NOT EXISTS `Programs` (
   `program_name` VARCHAR(45) NOT NULL,
   `Services` TINYINT(1) NOT NULL,
   `programs_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
@@ -942,7 +942,7 @@ CREATE TABLE `Programs` (
   INDEX `Services_idx` (`Services` ASC) VISIBLE,
   CONSTRAINT `Services`
     FOREIGN KEY (`Services`)
-    REFERENCES `mydb`.`Services` (`services_id`)
+    REFERENCES `Services` (`services_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -952,9 +952,9 @@ LOCK TABLES `Programs` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `Organizations` ;
+DROP TABLE IF EXISTS `Organizations` ;
 
-CREATE TABLE `Organizations` (
+CREATE TABLE IF NOT EXISTS `Organizations` (
   `organization_name` VARCHAR(45) NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
   `organizations_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
@@ -963,7 +963,7 @@ CREATE TABLE `Organizations` (
   INDEX `Services_idx` (`Services` ASC) VISIBLE,
   CONSTRAINT `fk_Services_Organizations`
     FOREIGN KEY (`Services`)
-    REFERENCES `mydb`.`Services` (`services_id`)
+    REFERENCES `Services` (`services_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -973,9 +973,9 @@ LOCK TABLES `Organizations` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `PaymentType` ;
+DROP TABLE IF EXISTS `PaymentType` ;
 
-CREATE TABLE `PaymentType` (
+CREATE TABLE IF NOT EXISTS `PaymentType` (
   `billing_address` VARCHAR(45) NOT NULL,
   `billing_city` VARCHAR(45) NOT NULL,
   `billing_zipcode` VARCHAR(45) NOT NULL,
@@ -991,9 +991,9 @@ LOCK TABLES `PaymentType` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `CreditCardPayment` ;
+DROP TABLE IF EXISTS `CreditCardPayment` ;
 
-CREATE TABLE `CreditCardPayment` (
+CREATE TABLE IF NOT EXISTS `CreditCardPayment` (
   `firstname` VARCHAR(45) NOT NULL,
   `lastname` VARCHAR(45) NOT NULL,
   `card_number` CHAR(16) NOT NULL,
@@ -1008,7 +1008,7 @@ CREATE TABLE `CreditCardPayment` (
   INDEX `PaymentType_idx` (`PaymentType` ASC) VISIBLE,
   CONSTRAINT `fk_PaymentType_CreditCardPayment`
     FOREIGN KEY (`PaymentType`)
-    REFERENCES `mydb`.`PaymentType` (`paymentType_id`)
+    REFERENCES `PaymentType` (`paymentType_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -1018,9 +1018,9 @@ LOCK TABLES `CreditCardPayment` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `BankAccountPayment` ;
+DROP TABLE IF EXISTS `BankAccountPayment` ;
 
-CREATE TABLE `BankAccountPayment` (
+CREATE TABLE IF NOT EXISTS `BankAccountPayment` (
   `firstname` VARCHAR(45) NOT NULL,
   `lastname` VARCHAR(45) NOT NULL,
   `bank_account_number` INT NOT NULL,
@@ -1032,7 +1032,7 @@ CREATE TABLE `BankAccountPayment` (
   INDEX `PaymentType_idx` (`PaymentType` ASC) VISIBLE,
   CONSTRAINT `fk_PaymentType_BankAccountPayment`
     FOREIGN KEY (`PaymentType`)
-    REFERENCES `mydb`.`PaymentType` (`paymentType_id`)
+    REFERENCES `PaymentType` (`paymentType_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -1042,9 +1042,9 @@ LOCK TABLES `BankAccountPayment` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `Scholarship` ;
+DROP TABLE IF EXISTS `Scholarship` ;
 
-CREATE TABLE `Scholarship` (
+CREATE TABLE IF NOT EXISTS `Scholarship` (
   `amount` INT NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
   `scholarship_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
@@ -1056,9 +1056,9 @@ LOCK TABLES `Scholarship` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `Account` ;
+DROP TABLE IF EXISTS `Account` ;
 
-CREATE TABLE `Account` (
+CREATE TABLE IF NOT EXISTS `Account` (
   `account_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
   `firstname` VARCHAR(45) NOT NULL,
   `lastname` VARCHAR(45) NOT NULL,
@@ -1075,22 +1075,22 @@ CREATE TABLE `Account` (
   INDEX `fk_paymentType_idx` (`PaymentType` ASC) VISIBLE,
   CONSTRAINT `fk_User_Account`
     FOREIGN KEY (`User`)
-    REFERENCES `mydb`.`User` (`user_id`)
+    REFERENCES `User` (`user_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Scholarship_Account`
     FOREIGN KEY (`Scholarship`)
-    REFERENCES `mydb`.`Scholarship` (`scholarship_id`)
+    REFERENCES `Scholarship` (`scholarship_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_Student_Account`
     FOREIGN KEY (`Student`)
-    REFERENCES `mydb`.`Student` (`student_id`)
+    REFERENCES `Student` (`student_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE,
   CONSTRAINT `fk_paymentType_Account`
     FOREIGN KEY (`PaymentType`)
-    REFERENCES `mydb`.`PaymentType` (`paymentType_id`)
+    REFERENCES `PaymentType` (`paymentType_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -1102,7 +1102,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `FinancialAid` ;
 
-CREATE TABLE `FinancialAid` (
+CREATE TABLE IF NOT EXISTS `FinancialAid` (
   `amount` INT NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
   `financialAid_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
@@ -1111,7 +1111,7 @@ CREATE TABLE `FinancialAid` (
   INDEX `Account_idx` (`Account` ASC) VISIBLE,
   CONSTRAINT `fk_Account_FinancialAid`
     FOREIGN KEY (`Account`)
-    REFERENCES `mydb`.`Account` (`account_id`)
+    REFERENCES `Account` (`account_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -1121,9 +1121,9 @@ LOCK TABLES `FinancialAid` WRITE;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS IF NOT EXISTS `Loan` ;
+DROP TABLE IF EXISTS `Loan` ;
 
-CREATE TABLE `Loan` (
+CREATE TABLE IF NOT EXISTS `Loan` (
   `amount` INT NOT NULL,
   `language_id` TINYINT(1) NOT NULL,
   `loan_id` TINYINT(1) NOT NULL AUTO_INCREMENT,
@@ -1132,7 +1132,7 @@ CREATE TABLE `Loan` (
   INDEX `Account_idx` (`Account` ASC) VISIBLE,
   CONSTRAINT `fk_Account_Loan`
     FOREIGN KEY (`Account`)
-    REFERENCES `mydb`.`Account` (`account_id`)
+    REFERENCES `Account` (`account_id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

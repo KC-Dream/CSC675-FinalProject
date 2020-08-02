@@ -71,15 +71,15 @@ var express     = require("express"),
         host: 'localhost',
         user: 'root',
         password: 'password',
-        database: 'csc675db'
+        database: 'csc690db'
     });
 
     db.connect((err) => {
         if(err) {
             throw err;
         }
-        console.log('Connected to csc675db SQL Database.');
-        db.query('USE csc675db');
+        console.log('Connected to csc690db SQL Database.');
+        db.query('USE csc690db');
     });
     
     app.db = db;
@@ -102,13 +102,25 @@ app.use(require("express-session")({
     saveUninitialized: false,
 }));
 
+var cp = require("child_process");
+
+//var cmd = 'mysql --user="root" --password="password" < databasemodel.sql';
+
+var cmd = 'mysql --user="root" --password="password" < inserts.sql';
+
+//mysql --user="root" --password="password" < inserts.sql
+
+//mysql --user="root" --password="password" < databasemodel.sql
+
+cp.exec(cmd, function(err, stdout, stderr) {
+    console.log(err, stdout, stderr);
+});
+
 /* Routes Here */
 
 //const homeRouter = require('./routes/home');
 
 //app.use(homeRouter);
-
-
 
 /* get/post here */
 
@@ -328,7 +340,7 @@ app.get("/signup", function(req, res) {
 
 /* Server Here */
 
-app.listen(3000, process.env.IP, function() {
+app.listen(3001, process.env.IP, function() {
     console.log("The Server Has Started!");
 });
 

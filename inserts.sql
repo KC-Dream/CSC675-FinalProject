@@ -6,7 +6,7 @@
 
 -- the database used to insert the data into.
 
-USE mydb;
+USE `csc690db`;
 
 -- DROP DATABASE myDB;
 
