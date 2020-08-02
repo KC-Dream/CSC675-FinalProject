@@ -1,6 +1,6 @@
 
 
-exports.updateData = function(req, res) {
+exports.deleteData = function(req, res) {
 
     var message = "";
     var session = req.session;
@@ -25,6 +25,7 @@ exports.updateData = function(req, res) {
         var query = req.app.db.query(sql, function(err, result, fields) {
 
             if(err) {
+
                 throw err;
             }
 
@@ -209,7 +210,7 @@ exports.updateData = function(req, res) {
 
             }
 
-           res.render("update", { result : allTableArray }); 
+           res.render("delete", { result : allTableArray }); 
 
         });
     }
@@ -219,19 +220,17 @@ exports.updateData = function(req, res) {
         var post = req.body;
         var search_entity = post.searchEntity;
         var search_field = post.searchField;
-        var search_old_value = post.searchOldValue;
-        var search_new_value = post.searchNewValue;
+        var search_value = post.searchValue;
 
-        console.log("SEARCH METHOD = POST");
+        console.log("DELETE METHOD = POST");
 
         console.log(search_entity);
         console.log(search_field);
-        console.log(search_old_value);
-        console.log(search_new_value);
+        console.log(search_value);
 
         //var sql = "SELECT * FROM " + search_entity + " WHERE " + search_field + "='" + search_value + "'";
 
-        var sql = "UPDATE " + search_entity + " SET " + search_field + " = '" + search_new_value + "' WHERE " + search_field + " = '" + search_old_value + "'";               
+        var sql = "DELETE FROM " + search_entity + " WHERE " + search_field + " = '" + search_value + "'";               
 
         var query = req.app.db.query(sql, function(err, result, fields) {
 
@@ -262,16 +261,14 @@ exports.updateData = function(req, res) {
 
                 }
 
-                var array = ["Thank you for submitting."];
+                var array = ["Thank you for deleting."];
 
                 res.render("submitted-inserts", { insertsData: array});
 
             }
             catch(err) {
 
-                var notFound = "Please Enter correct information! Uable to update this: " + "Search Term: " + search_entity + ", Search Field: " + search_field + ", Search Value: " + search_new_value;
-
-                var array = ["Attempted to process an update... Being Updated Thank you."];
+                var array = ["Attempted to process a DELETE REQUEST... Being Deleted Thank you."];
 
                 res.render("submitted-inserts", { insertsData: array});
             }

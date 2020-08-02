@@ -9,16 +9,16 @@
     <br/>
     <a href="/search">INSERT</a>
     <br/>
-    <a href="#">UPDATE</a>
+    <a href="/update">UPDATE</a>
     <br/>
-    <a href="#">DELETE</a>
+    <a href="/delete">DELETE</a>
     <br/>
     <a href="/exit">EXIT</a>
     <br/>
   </div>
 
   <div class="container">
-    <form action="/update" method="POST">
+    <form action="/delete" method="POST">
 
         <p>Enter a Entity - For Example User, School, Teacher etc:</p>
 
@@ -26,23 +26,19 @@
 
         <p>Field and value are showed on the bottom like this - field: value - like - firstname : 123</p>
 
-        <p>What is exactly a field? This is a field to filter your search result. For example: firstname</p>
+        <p>What is exactly a field? This is a field to filter your search result. For example: firstname, lastname</p>
 
         <p>Enter a field below:</p>
 
         <input id="search-input" class="form-control mr-sm-2" type="search" name="searchField" placeholder="Search" aria-label="Search">
 
-        <p>Enter old value below:</p>
-
-        <input id="search-input" class="form-control mr-sm-2" type="search" name="searchOldValue" placeholder="Search" aria-label="Search">
-
         <p>What is exactly a value? For Example: John, 21, 25, july, sfstate, etc</p>
 
-        <p>Enter new value below:</p>
+        <p>Enter value to delete below:</p>
 
-        <input id="search-input" class="form-control mr-sm-2" type="search" name="searchNewValue" placeholder="Search" aria-label="Search">
+        <input id="search-input" class="form-control mr-sm-2" type="search" name="searchValue" placeholder="Search" aria-label="Search">
 
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Update this result</button>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Delete this result</button>
     </form>
 </div>
 
@@ -82,5 +78,3 @@
 </style>
 
 <%- include ('partials/footer'); -%>
-
-

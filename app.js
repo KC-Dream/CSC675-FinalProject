@@ -24,7 +24,9 @@ var express     = require("express"),
     
     inserts = require('./routes/inserts'),
     
-    update= require('./routes/update');
+    update = require('./routes/update'),
+    
+    deleteRoute = require('./routes/delete');
 
     /* 
     Also: 
@@ -267,21 +269,13 @@ app.post("/inserts/Loan", inserts.Loan);
 app.get("/update", update.updateData);
 app.post("/update", update.updateData);
 
-
-
-
-/*
-app.get("searchNotFound", search.searchData);
-
-app.get("/searchResult", search.searchResult);
-
-
 /* END OF UPDATE */
 
 
 /* BEGIN OF DELETE */
 
-
+app.get("/delete", deleteRoute.deleteData);
+app.post("/delete", deleteRoute.deleteData);
 
 /* END OF DELETE */
 
