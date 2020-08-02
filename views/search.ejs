@@ -30,9 +30,36 @@
 
 <div class="container list-spacer" id="search-results">
 
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">TYPE</th>
+            <th scope="col">#</th>
+            <th scope="col">NAME</th>
+            <th scope="col">INSERT HERE</th>
+          </tr>
+        </thead>
+
+        <!-- EDIT HERE -->
+
+        <% for(var i = 0; i < result.length; i++) { %>
+            <tbody>
+                <tr>
+                  <th scope="row">Table</th>
+                  <td><%= i %></td>
+                  <td><%= result[i] %></td>
+                  <td><a href="/inserts/<%= result[i] %>"> + [ Insert Here ]</a></td>
+                </tr>
+            </tbody>
+        <% } %>
+
+    </table>
+
+    <!--
     <% for(var i = 0; i < result.length; i++) { %>
         <p>Table <%= i %> = <%= result[i] %> <a href="/inserts/<%= result[i] %>"> + [ Insert Here ]</a> </p>
     <% } %>
+    -->
 
 </div>
 
