@@ -333,19 +333,67 @@ exports.Degree = function(req, res) {
     
 };
 
+
 exports.Services = function(req, res) {
+
+    var message = "";
+    var session = req.session;
+
+    var post = req.body;
+    var language_id = post.language_id;
 
     if(req.method == "GET") {
 
         console.log("SEARCH METHOD = GET");
 
-        res.render("search");
+        res.render("inserts-services");
 
     }
 
     if(req.method == "POST") {
 
-        res.render("search");
+        var allTableArray = [];
+
+        var insertsData = [];
+
+        //var sql = "INSERT INTO `User` (`firstname`, `lastname`, `email`, `language_id`, `password`) VALUES ('kevin', 'zhou', '1234567@gmail.com', 1, '123456')";
+
+        //var sql = "INSERT INTO `User` (`firstname`, `lastname`, `email`, `language_id`, `password`) VALUES ('" + curr_firstname + "','" + curr_lastname + "','" + curr_email + "','" + curr_languageid + "','" + curr_pass + "')";
+
+        var sql = "INSERT INTO `Services` (`language_id`) VALUES ('" + language_id + "')";
+
+        var query = req.app.db.query(sql, function(err, result, fields) {
+
+            try {
+
+                for(var i = 0; i < result.length; i++) {
+
+                    console.log(result[i]);
+
+                    var stringResult = JSON.stringify(result[i]);
+
+                    stringResult = stringResult.replace("{\"TABLE_NAME\":\"", "");
+
+                    stringResult = stringResult.replace("\"}", "");
+
+                    //console.log(stringResult);
+
+                    allTableArray[i] = stringResult;
+
+                }
+
+                res.render("submitted-inserts", { insertsData : "Thank you for submitting" });
+            }
+            catch(err) {
+
+                console.log(err);
+
+                var notFound = "Unable to insert. Please enter info correctly.";
+
+                res.render("submitted-inserts", { insertsData : notFound });
+            }
+
+        });
 
     }
     

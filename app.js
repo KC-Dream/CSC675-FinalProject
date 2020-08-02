@@ -153,7 +153,6 @@ app.get("/inserts/Student", inserts.School);
 //app.get("/insert/User", inserts.School);
 app.get("/inserts/Languages", inserts.Languages);
 
-
 app.get("/inserts/Admin", inserts.Admin);
 app.get("/inserts/SupportTeam", inserts.SupportTeam);
 app.get("/inserts/Teacher", inserts.Teacher);
@@ -187,16 +186,16 @@ app.get("/inserts/ClubMeeting", inserts.ClubMeeting);
 app.get("/inserts/Syllabus", inserts.Syllabus);
 app.get("/inserts/Subjects", inserts.Subjects);
 
-app.get("/insert/Plans", inserts.Plans);
-app.get("/insert/MealPlan", inserts.MealPlan);
-app.get("/insert/HealthPlan", inserts.HealthPlan);
-app.get("/insert/Programs", inserts.Programs);
-app.get("/insert/Organizations", inserts.Organizations);
-app.get("/insert/PaymentType", inserts.PaymentType);
-app.get("/insert/CreditCardPayment", inserts.CreditCardPayment);
-app.get("/insert/BankAccountPayment", inserts.BankAccountPayment);
-app.get("/insert/Scholarship", inserts.Scholarship);
-app.get("/insert/Account", inserts.Account);
+app.get("/inserts/Plans", inserts.Plans);
+app.get("/inserts/MealPlan", inserts.MealPlan);
+app.get("/inserts/HealthPlan", inserts.HealthPlan);
+app.get("/inserts/Programs", inserts.Programs);
+app.get("/inserts/Organizations", inserts.Organizations);
+app.get("/inserts/PaymentType", inserts.PaymentType);
+app.get("/inserts/CreditCardPayment", inserts.CreditCardPayment);
+app.get("/inserts/BankAccountPayment", inserts.BankAccountPayment);
+app.get("/inserts/Scholarship", inserts.Scholarship);
+app.get("/inserts/Account", inserts.Account);
 
 app.get("/inserts/FinancialAid", inserts.FinancialAid);
 app.get("/inserts/Loan", inserts.Loan);
