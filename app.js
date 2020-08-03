@@ -4,17 +4,17 @@ var express     = require("express"),
 
     bodyParser  = require("body-parser"),
 
-    mongoose    = require("mongoose"),
-    
-    flash       = require("connect-flash"),
-
-    passport    = require("passport"),
-
-    LocalPassport = require("passport-local"),
-
     methodOverride = require("method-override"),
+
+    //session library
     
     session = require('express-session'),
+
+    //Allows to open browser from node js code
+
+    opn = require('opn');
+
+    //routes
     
     routes = require('./routes/home'),
     
@@ -104,15 +104,15 @@ app.use(require("express-session")({
 
 var child = require("child_process");
 
-//var cmd = 'mysql --user="root" --password="password" < databasemodel.sql';
+var cmd = 'mysql --user="root" --password="password" < databasemodel.sql';
 
-var cmd = 'mysql --user="root" --password="password" < inserts.sql';
+var cmd2 = 'mysql --user="root" --password="password" < inserts.sql';
 
 //mysql --user="root" --password="password" < inserts.sql
 
 //mysql --user="root" --password="password" < databasemodel.sql
 
-child.exec(cmd, function(err, result, field) {
+child.exec(cmd, cmd2, function(err, result, field) {
     console.log(err);
 });
 
@@ -340,8 +340,63 @@ app.get("/signup", function(req, res) {
 
 /* Server Here */
 
-app.listen(3001, process.env.IP, function() {
+var port = 3010;
+
+//0 and 1 number
+
+var random = Math.floor(Math.random() * 10);
+
+if(random == 0) {
+
+    port = 3010;
+}
+else if(random == 1) {
+
+    port = 3001;
+}
+else if(random == 2) {
+
+    port = 3002;
+}
+else if(random == 3) {
+
+    port = 3003;
+}
+else if(random == 4) {
+
+    port = 3004;
+}
+else if(random == 5) {
+
+    port = 3005;
+}
+else if(random == 6) {
+
+    port = 3006;
+}
+else if(random == 7) {
+
+    port = 3007;
+}
+else if(random == 8) {
+
+    port = 3008;
+}
+else {
+
+    port = 3009;
+}
+
+//port is randomly selected and this code will execute and open localhost in the browser automatically
+
+app.listen(port, process.env.IP, function(req, res) {
     console.log("The Server Has Started!");
+
+    console.log("Opening on PORT: " + port + " in default browser");
+
+    opn('http://localhost:' + port);
+
+    
 });
 
 
