@@ -12,7 +12,9 @@ var express     = require("express"),
 
     //Allows to open browser from node js code
 
-    opn = require('opn');
+    opn = require('opn'),
+    
+    config = require('./config.json');
 
     //routes
     
@@ -68,10 +70,10 @@ var express     = require("express"),
     
     const mysql = require('mysql');
     const db = mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: 'password',
-        database: 'csc675course'
+        host: config.host,
+        user: config.username,
+        password: config.password,
+        database: config.database
     });
 
     db.connect((err) => {
